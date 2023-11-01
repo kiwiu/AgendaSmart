@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="celeste">#9ed9eb</color>
+    <color name="colorSecondary">#b7d7c9</color>
+    <color name="colorTertiary">#f7cfcf</color>
+    <color name="spindle">#b4c7e9</color>
+    <color name="Papaya_whip">#ffefd6</color>
+    <color name="Textcolor">#001F3F</color>
 </resources>

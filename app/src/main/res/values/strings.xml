@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">AgendaSmart</string>
+    <string name="Title">AgendaSmart</string>
+    <string name="btnIniciarSesion">Ininiciar sesión</string>
+    <string name="btnRegistrar">Registrarse</string>
+    <string name="Registro">Registro</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Email">Correo electrónico</string>
+    <string name="Password">Contraseña</string>
+    <string name="ConfirmPassword">Confirmar contraseña</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="yaTengoCuenta">Ya tengo una</string>
+    <string name="cuenta">Cuenta</string>
 </resources>

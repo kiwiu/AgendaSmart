@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.InicioActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/inicio_view"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/spindle"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imagenInicio"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:src="@drawable/agendasmart_icono"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/Title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/museomoderno"
+            android:text="@string/Title"
+            android:textColor="@color/Textcolor"
+            android:textSize="40sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vector_view"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:background="@drawable/vector" />
+    
+    <LinearLayout
+        android:id="@+id/botones_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnIngresarInicio"
+            android:layout_width="320dp"
+            android:layout_height="72dp"
+            android:background="@drawable/btn_inicio"
+            android:fontFamily="@font/museomoderno"
+            android:text="@string/btnIniciarSesion"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btnRegistrarInicio"
+            android:layout_width="320dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stroke_btm"
+            android:fontFamily="@font/museomoderno"
+            android:text="@string/btnRegistrar"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</LinearLayout>
