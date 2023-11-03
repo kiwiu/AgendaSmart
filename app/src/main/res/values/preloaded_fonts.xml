@@ -3,5 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/museomoderno</item>
         <item>@font/museomoderno_bold</item>
+        <item>@font/museomoderno_extrabold</item>
+        <item>@font/museomoderno_semibold</item>
     </array>
 </resources>

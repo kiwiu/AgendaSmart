@@ -20,7 +20,7 @@ public class InicioSesionActivity extends AppCompatActivity {
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
 
-        btnIniciarSesion.setOnClickListener( v -> startActivity(new Intent(InicioSesionActivity.this, MainActivity.class)));
+        btnIniciarSesion.setOnClickListener( v -> startActivity(new Intent(InicioSesionActivity.this, LobbyActivity.class)));
         btnRegistrarse.setOnClickListener( v -> startActivity(new Intent(InicioSesionActivity.this, RegistroActivity.class)));
     }
 }

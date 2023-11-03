@@ -11,4 +11,30 @@
     <string name="cancelar">Cancelar</string>
     <string name="yaTengoCuenta">Ya tengo una</string>
     <string name="cuenta">Cuenta</string>
+
+    <string name="Hola">Hola!</string>
+    <string name="NombreUsuario">Nombre de usuario</string>
+    <string name="CorreoUsuario">Correo de electronico</string>
+    <string name="verificar">Verificar</string>
+    <string name="Bienvenido">Bienvenido</string>
+    <string name="TareasContactos">Tareas y contactos</string>
+
+    <string name="AgregarTarea">Agregar tarea</string>
+    <string name="Mistareas">Mis tareas</string>
+    <string name="Importantes">Importantes</string>
+    <string name="Contactos">Contactos</string>
+
+    <string name="desarrollado">Desarrollado por:</string>
+    <string name="version">Version: 1.0</string>
+    <string name="Soporte">Soporte: innosoft@gmail.com</string>
+    <string name="entendido">Entendido</string>
+
+    <string name="ActualizarPerfil">Actualizar perfil</string>
+    <string name="PerfilUsuario">Perfil de usuario</string>
+    <string name="MisNombres">Mis nombres</string>
+    <string name="MisApellidos">Mis apellidos</string>
+    <string name="edad">Mi edad</string>
+    <string name="Domicilio">Domicilio</string>
+    <string name="Telefono">Telefono</string>
+    <string name="profesion">Profesión</string>
 </resources>

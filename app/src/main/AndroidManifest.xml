@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AgendaSmart"
         tools:targetApi="31">
         <activity
+            android:name=".views.ActualizarPerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.LobbyActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.RegistroActivity"
             android:exported="false" />
         <activity
