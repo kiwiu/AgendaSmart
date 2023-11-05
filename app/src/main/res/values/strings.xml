@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AgendaSmart</string>
     <string name="Title">AgendaSmart</string>
-    <string name="btnIniciarSesion">Ininiciar sesión</string>
+    <string name="btnIniciarSesion">Iniciar sesión</string>
     <string name="btnRegistrar">Registrarse</string>
     <string name="Registro">Registro</string>
     <string name="Nombre">Nombre</string>
@@ -14,7 +14,7 @@
 
     <string name="Hola">Hola!</string>
     <string name="NombreUsuario">Nombre de usuario</string>
-    <string name="CorreoUsuario">Correo de electronico</string>
+    <string name="CorreoUsuario">Correo electronico</string>
     <string name="verificar">Verificar</string>
     <string name="Bienvenido">Bienvenido</string>
     <string name="TareasContactos">Tareas y contactos</string>
@@ -37,4 +37,44 @@
     <string name="Domicilio">Domicilio</string>
     <string name="Telefono">Telefono</string>
     <string name="profesion">Profesión</string>
+
+    <string name="FechaCreacion">Fecha de creación</string>
+    <string name="fecha">Fecha</string>
+    <string name="Descripcion">Descripción</string>
+    <string name="Titulo">Titulo</string>
+    <string name="fechalimite">Fecha limite</string>
+    <string name="formato">DD/MM/YYYY</string>
+    <string name="nofinalizada">No finalizada</string>
+
+    <string name="itenid">Id Tarea</string>
+    <string name="uidUsuario">Id Usuario</string>
+    <string name="FechaCreacioniten">Fecha de creación</string>
+    <string name="fechaiten">Fecha</string>
+    <string name="Descripcioniten">Descripción</string>
+    <string name="Tituloiten">Titulo</string>
+    <string name="fechalimiteiten">Fecha limite</string>
+    <string name="formatoiten">DD/MM/YYYY</string>
+    <string name="nofinalizadaiten">No finalizada</string>
+
+    <string name="nuevatarea">Nueva tarea</string>
+    <string name="mistareas">Mis tareas</string>
+    <string name="tareasImportantes">Tareas importantes</string>
+
+    <string name="Eliminarcuenta">Eliminar cuenta</string>
+    <string name="detallesTarea">Detalles de la tarea</string>
+
+    <string name="tituloDetalle">Titulo:</string>
+    <string name="descripcionDetalle">Descripción:</string>
+    <string name="fechaDetalle">Fecha de registro:</string>
+    <string name="fechaLimiteDetalle">Fecha limite:</string>
+    <string name="estadoDetalle">Estado:</string>
+
+    <string name="SettituloDetalle">Titulo</string>
+    <string name="SetdescripcionDetalle">Descripción</string>
+    <string name="SetfechaDetalle">Fecha de registro</string>
+    <string name="SetfechaLimiteDetalle">Fecha limite</string>
+    <string name="SetestadoDetalle">Estado</string>
+
+    <string name="noImportante">No importante</string>
+
 </resources>

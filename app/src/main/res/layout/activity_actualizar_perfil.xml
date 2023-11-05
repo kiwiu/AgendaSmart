@@ -33,6 +33,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/btnBack"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
@@ -168,7 +169,7 @@
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="@string/CorreoUsuario"
+           android:hint="@string/CorreoUsuario"
            android:textColor="@color/black"
            android:fontFamily="@font/museomoderno"/>
 

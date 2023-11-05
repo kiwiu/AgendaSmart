@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/corner_celeste"
             android:orientation="horizontal"
             android:weightSum="5"
@@ -79,6 +79,7 @@
                    android:layout_width="100dp"
                    android:layout_height="35dp"
                    android:layout_marginTop="5dp"
+                   android:layout_marginBottom="5dp"
                    android:text="@string/verificar"
                    android:fontFamily="@font/museomoderno"
                    android:textAllCaps="false"
@@ -92,7 +93,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/stroke_btm"
@@ -153,6 +154,7 @@
                        android:padding="5dp">
 
                        <LinearLayout
+                           android:id="@+id/btn_agregar_tarea"
                            android:layout_width="match_parent"
                            android:layout_height="match_parent"
                            android:background="@drawable/btn_inicio"
@@ -186,6 +188,7 @@
                         android:padding="5dp">
 
                         <LinearLayout
+                            android:id="@+id/btn_mis_tareas"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/btn_inicio"
@@ -227,6 +230,7 @@
                         tools:ignore="NestedWeights">
 
                         <LinearLayout
+                            android:id="@+id/btn_tareas_importantes"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/btn_inicio"
@@ -259,6 +263,7 @@
                         android:padding="5dp">
 
                         <LinearLayout
+                            android:id="@+id/btn_contactos"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/btn_inicio"
@@ -350,6 +355,7 @@
                 android:gravity="center">
 
                 <ImageButton
+                    android:id="@+id/btn_configuracion"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackgroundBorderless"

@@ -8,20 +8,20 @@ import android.widget.ImageButton;
 
 import com.example.agendasmart.R;
 
-public class ActualizarPerfilActivity extends AppCompatActivity {
+public class MisTareasActivity extends AppCompatActivity {
 
     ImageButton btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actualizar_perfil);
+        setContentView(R.layout.activity_mis_tareas);
 
         btnBack = (ImageButton) findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActualizarPerfilActivity.super.onBackPressed();
+                MisTareasActivity.super.onBackPressed();
             }
         });
     }
