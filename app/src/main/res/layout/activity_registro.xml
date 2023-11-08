@@ -53,6 +53,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/Nombre"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
                 android:layout_marginTop="15dp"
@@ -74,6 +75,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/Correo"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
                 android:background="@drawable/stroke_btm"
@@ -95,6 +97,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/Contraseña"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
                 android:background="@drawable/stroke_btm"
@@ -116,6 +119,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/ConfirmarContraseña"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
                 android:background="@drawable/stroke_btm"
