@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "664242705791",
+    "project_id": "agendasmart-5a9d5",
+    "storage_bucket": "agendasmart-5a9d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664242705791:android:fc2c2d8e6411ec1837364a",
+        "android_client_info": {
+          "package_name": "com.example.agendasmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ZQwwh7kxSQeFwOOcRxusXMqZt5R8150"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
