@@ -56,28 +56,30 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Hola"
                     android:fontFamily="@font/museomoderno"
-                    android:textSize="32sp"
+                    android:textSize="28sp"
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/tv_nombre_usuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/NombreUsuario"
                     android:fontFamily="@font/museomoderno"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                    android:text="@string/NombreUsuario"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_correo_usuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/CorreoUsuario"
                     android:fontFamily="@font/museomoderno"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textColor="@color/black"/>
                 
                <Button
                    android:layout_width="100dp"
-                   android:layout_height="35dp"
+                   android:layout_height="wrap_content"
                    android:layout_marginTop="5dp"
                    android:layout_marginBottom="5dp"
                    android:text="@string/verificar"
@@ -322,6 +324,7 @@
                 android:gravity="center">
 
                 <ImageButton
+                    android:id="@+id/btn_salir"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
