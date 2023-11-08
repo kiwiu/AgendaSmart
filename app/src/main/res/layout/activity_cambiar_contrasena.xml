@@ -97,6 +97,11 @@
         android:gravity="center"
         android:layout_marginTop="10dp">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,6 +110,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/actualpass"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
@@ -129,6 +135,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/newpass"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
@@ -153,6 +160,7 @@
             app:hintTextColor="@color/black">
 
             <EditText
+                android:id="@+id/confirmpass"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
@@ -175,6 +183,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/btnActualizar"
             android:layout_marginBottom="15dp"
             android:layout_width="239dp"
             android:layout_height="50dp"
