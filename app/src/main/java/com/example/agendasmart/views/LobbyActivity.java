@@ -76,7 +76,22 @@ public class LobbyActivity extends AppCompatActivity {
         perfil.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, ActualizarPerfilActivity.class)));
         configuracion.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, EliminarCuentaActivity.class)));
 
-        btn_agregar_tarea.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, AgregarTareaActivity.class)));
+
+        btn_agregar_tarea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*esto e para obtener el texto de lo textview*/
+                String uid_usuario = tv_nombre_usuario.getText().toString();
+                String correo_usuario = tv_correo_usuario.getText().toString();
+
+                /*pasar los datos a la actividad de agregar_tarea*/
+                Intent intent = new Intent(LobbyActivity.this, AgregarTareaActivity.class);
+                intent.putExtra("uid", uid_usuario);
+                intent.putExtra("correo", correo_usuario);
+                startActivity(intent);
+            }
+        });
+
         btn_mis_tareas.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, MisTareasActivity.class)));
         btn_tareas_importantes.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, TareasImportantesActivity.class)));
         btn_contactos.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, TareasImportantesActivity.class)));

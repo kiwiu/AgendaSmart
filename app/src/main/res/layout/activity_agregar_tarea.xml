@@ -73,6 +73,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/btn_agregar_tarea"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
@@ -111,6 +112,17 @@
                 android:src="@drawable/reloj"/>
 
             <TextView
+                android:id="@+id/uid_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Nombre usuario"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/museomoderno_semibold"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/correo_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/CorreoUsuario"
@@ -119,6 +131,7 @@
                 android:fontFamily="@font/museomoderno_semibold"/>
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/FechaCreacion"
@@ -127,6 +140,7 @@
                 android:fontFamily="@font/museomoderno_semibold"/>
 
             <TextView
+                android:id="@+id/fecha_hora_actual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/fecha"
@@ -135,6 +149,7 @@
                 android:fontFamily="@font/museomoderno_semibold"/>
 
             <EditText
+                android:id="@+id/titulo"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
                 android:background="@drawable/stroke_btm"
@@ -144,6 +159,7 @@
                 android:padding="16dp" />
 
             <EditText
+                android:id="@+id/descripcion"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/stroke_btm"
@@ -171,6 +187,7 @@
                 android:paddingVertical="10dp">
 
                 <Button
+                    android:id="@+id/btn_calendario"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_inicio"
@@ -191,6 +208,7 @@
                 android:padding="20dp">
 
                 <TextView
+                    android:id="@+id/fecha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/formato"
@@ -209,6 +227,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/estado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/nofinalizada"
