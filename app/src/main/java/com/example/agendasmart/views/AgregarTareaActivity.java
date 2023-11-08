@@ -14,7 +14,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.agendasmart.Objetos.Tarea;
 import com.example.agendasmart.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,6 +31,8 @@ public class AgregarTareaActivity extends AppCompatActivity {
     ImageButton btnBack, btn_agregar_tarea;
 
     int dia, mes, anio;
+
+    DatabaseReference BD_Firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +107,8 @@ public class AgregarTareaActivity extends AppCompatActivity {
         descripcion = (EditText)findViewById(R.id.descripcion);
         btn_calendario = (Button)findViewById(R.id.btn_calendario);
         btn_agregar_tarea = (ImageButton) findViewById(R.id.btn_agregar_tarea);
+
+        BD_Firebase = FirebaseDatabase.getInstance().getReference();
     }
 
     private void  ObtenerDatos(){
@@ -118,8 +125,34 @@ public class AgregarTareaActivity extends AppCompatActivity {
         fecha_hora_actual.setText(FechaHoraRegistro);
     }
 
-    private void AgregarTareas() {
+    private void AgregarTareas(){
+        String Uid_usuario = uid_usuario.getText().toString();
+        String Correo_usuario = correo_usuario.getText().toString();
+        String FechaHoraActual = fecha_hora_actual.getText().toString();
+        String Titulo = titulo.getText().toString();
+        String Descripcion = descripcion.getText().toString();
+        String Fecha = fecha.getText().toString();
+        String Estado = estado.getText().toString();
+
+        /*validar datos*/
+
+        Tarea tarea = new Tarea(Correo_usuario + "/" + FechaHoraActual,
+                Uid_usuario,
+                Correo_usuario,
+                FechaHoraActual,
+                Titulo,
+                Descripcion,
+                Fecha,
+                Estado);
+
+        String Tarea_usuario = BD_Firebase.push().getKey();
+        String Nombre_BD = "Tareas_publicadas";
+
+        BD_Firebase.child(Nombre_BD).child(Tarea_usuario).setValue(tarea);
 
         Toast.makeText(this, "Nota agregada con éxito", Toast.LENGTH_SHORT).show();
+
+        onBackPressed();
+
     }
 }
