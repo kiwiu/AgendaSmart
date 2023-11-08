@@ -106,7 +106,7 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
                                     public void onSuccess(Void unused) {
                                         Toast.makeText(CambiarContrasenaActivity.this, "Contraseña actualizada", Toast.LENGTH_SHORT).show();
                                         firebaseAuth.signOut();
-                                        Intent intent = new Intent(CambiarContrasenaActivity.this, InicioActivity.class)
+                                        Intent intent = new Intent(CambiarContrasenaActivity.this, InicioSesionActivity.class)
                                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
