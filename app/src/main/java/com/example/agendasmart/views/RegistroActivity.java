@@ -64,7 +64,7 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //
-                GuardarInformacion();
+                CrearCuenta();
             }
         });
 
