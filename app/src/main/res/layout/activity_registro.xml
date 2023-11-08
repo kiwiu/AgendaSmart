@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/inicio_view"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="220dp"
         android:background="@color/spindle"
         android:orientation="vertical"
         android:gravity="center">
@@ -36,12 +36,12 @@
     <View
         android:id="@+id/vector_view"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
+        android:layout_height="57dp"
         android:background="@drawable/vector" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="390dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_marginTop="10dp">
@@ -50,14 +50,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cursorColor="@color/black"
+            android:background="@drawable/stroke_btm"
             app:hintTextColor="@color/black">
 
             <EditText
                 android:id="@+id/Nombre"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/stroke_btm"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/user"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/museomoderno"
@@ -72,16 +72,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cursorColor="@color/black"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="10dp"
             app:hintTextColor="@color/black">
 
             <EditText
                 android:id="@+id/Correo"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
-                android:background="@drawable/stroke_btm"
                 android:drawableStart="@drawable/email"
-                android:layout_marginTop="15dp"
                 android:hint="@string/Email"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/museomoderno"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
@@ -94,13 +95,15 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             app:cursorColor="@color/black"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="10dp"
             app:hintTextColor="@color/black">
 
             <EditText
                 android:id="@+id/Contraseña"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
-                android:background="@drawable/stroke_btm"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/lock"
                 android:layout_marginTop="15dp"
                 android:hint="@string/Password"
@@ -116,13 +119,15 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             app:cursorColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stroke_btm"
             app:hintTextColor="@color/black">
 
             <EditText
                 android:id="@+id/ConfirmarContraseña"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
-                android:background="@drawable/stroke_btm"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/lock"
                 android:drawableEnd="@drawable/more"
                 android:layout_marginTop="15dp"

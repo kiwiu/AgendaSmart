@@ -76,5 +76,10 @@
     <string name="SetestadoDetalle">Estado</string>
 
     <string name="noImportante">No importante</string>
+    <string name="cambiarContraseña">Cambiar contraseña</string>
+    <string name="actualizarContraseña">Actualizar contraseña</string>
+    <string name="contraseñaActual">Contraseña actual</string>
+    <string name="contraseñaNueva">Contraseña nueva</string>
+    <string name="confirmarContraseña">Confirmar contraseña</string>
 
 </resources>

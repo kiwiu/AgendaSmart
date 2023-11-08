@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.CambiarContrasenaActivity">
+
+    <LinearLayout
+        android:id="@+id/inicio_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/spindle"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="6"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/Title"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/salir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:text="@string/cambiarContraseña"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imagenInicio"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:src="@drawable/agendasmart_icono"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/Title"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/museomoderno"
+                android:text="@string/Title"
+                android:textColor="@color/Textcolor"
+                android:textSize="40sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vector_view"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:background="@drawable/vector" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cursorColor="@color/black"
+            android:background="@drawable/stroke_btm"
+            app:hintTextColor="@color/black">
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:layout_width="320dp"
+                android:layout_height="67dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/lock"
+                android:layout_marginTop="15dp"
+                android:hint="@string/contraseñaActual"
+                android:fontFamily="@font/museomoderno"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:drawablePadding="8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:cursorColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stroke_btm"
+            app:hintTextColor="@color/black">
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:layout_width="320dp"
+                android:layout_height="67dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/lock"
+                android:drawableEnd="@drawable/more"
+                android:hint="@string/contraseñaNueva"
+                android:fontFamily="@font/museomoderno"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:drawablePadding="8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:cursorColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stroke_btm"
+            app:hintTextColor="@color/black">
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:layout_width="320dp"
+                android:layout_height="67dp"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/lock"
+                android:drawableEnd="@drawable/more"
+                android:hint="@string/confirmarContraseña"
+                android:fontFamily="@font/museomoderno"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:drawablePadding="8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:layout_marginBottom="15dp"
+            android:layout_width="239dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_inicio"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/update_btn"
+            android:text="@string/actualizarContraseña"
+            android:textAllCaps="false"
+            android:fontFamily="@font/museomoderno_semibold"
+            android:paddingHorizontal="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

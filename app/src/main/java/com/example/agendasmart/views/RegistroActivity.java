@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,8 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
-                CrearCuenta();
+                ValidarDatos();
             }
         });
 
@@ -78,6 +79,34 @@ public class RegistroActivity extends AppCompatActivity {
         //inicioSesion.setOnClickListener( v -> startActivity(new Intent(RegistroActivity.this, InicioSesionActivity.class)));
         //btnRegistrarse.setOnClickListener( v -> startActivity(new Intent(RegistroActivity.this, InicioSesionActivity.class)));
         btnCancelar.setOnClickListener( v -> startActivity(new Intent(RegistroActivity.this, InicioActivity.class)));
+    }
+
+    private void ValidarDatos(){
+        nombre = Nombre.getText().toString();
+        correo = Correo.getText().toString();
+        contraseña = Contraseña.getText().toString();
+        confirmarcontraseña = ConfirmarContraseña.getText().toString();
+
+        if (TextUtils.isEmpty(nombre)){
+            Toast.makeText(this, "Ingrese nombre", Toast.LENGTH_SHORT).show();
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
+            Toast.makeText(this, "Ingrese correo", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(contraseña)){
+            Toast.makeText(this, "Ingrese contraseña", Toast.LENGTH_SHORT).show();
+
+        }
+        else if (TextUtils.isEmpty(confirmarcontraseña)){
+            Toast.makeText(this, "Confirme contraseña", Toast.LENGTH_SHORT).show();
+
+        }
+        else if (!contraseña.equals(confirmarcontraseña)){
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            CrearCuenta();
+        }
     }
 
     private void CrearCuenta() {

@@ -50,15 +50,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cursorColor="@color/black"
+            android:background="@drawable/stroke_btm"
             app:hintTextColor="@color/black">
 
             <EditText
                 android:id="@+id/Correo"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
-                android:background="@drawable/stroke_btm"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/email"
-                android:layout_marginTop="15dp"
                 android:hint="@string/Email"
                 android:fontFamily="@font/museomoderno"
                 android:inputType="textEmailAddress"
@@ -72,19 +72,20 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             app:cursorColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stroke_btm"
             app:hintTextColor="@color/black">
 
             <EditText
                 android:id="@+id/Contraseña"
                 android:layout_width="320dp"
                 android:layout_height="67dp"
-                android:background="@drawable/stroke_btm"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/lock"
                 android:drawableEnd="@drawable/more"
-                android:layout_marginTop="20dp"
                 android:hint="@string/Password"
                 android:fontFamily="@font/museomoderno"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:drawablePadding="8dp"/>
 

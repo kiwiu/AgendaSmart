@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,7 +64,7 @@ public class InicioSesionActivity extends AppCompatActivity {
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginDeUsuario();
+                ValidarDatos();
             }
         });
 
@@ -72,9 +74,24 @@ public class InicioSesionActivity extends AppCompatActivity {
                 startActivity(new Intent(InicioSesionActivity.this, RegistroActivity.class));
             }
         });
+    }
 
-        //btnIniciarSesion.setOnClickListener( v -> startActivity(new Intent(InicioSesionActivity.this, LobbyActivity.class)));
-        // btnRegistrarse.setOnClickListener( v -> startActivity(new Intent(InicioSesionActivity.this, RegistroActivity.class)));
+    private void ValidarDatos() {
+
+        correo = Correo.getText().toString();
+        contraseña = Contraseña.getText().toString();
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
+            Toast.makeText(this, "Correo inválido", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(contraseña)){
+            Toast.makeText(this, "Ingrese contraseña", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            LoginDeUsuario();
+        }
+
     }
 
     private void LoginDeUsuario() {
