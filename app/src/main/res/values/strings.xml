@@ -82,4 +82,12 @@
     <string name="contraseñaNueva">Contraseña nueva</string>
     <string name="confirmarContraseña">Confirmar contraseña</string>
 
+    <string name="idContacto">Id Contacto</string>
+    <string name="UidUsuario">Id Usuario</string>
+    <string name="NombreContacto">Nombres</string>
+    <string name="ApellidoContacto">Apellidos</string>
+    <string name="TelefonoContacto">Telefono</string>
+    <string name="CorreoContacto">Correo</string>
+    <string name="EdadContacto">Edad</string>
+
 </resources>

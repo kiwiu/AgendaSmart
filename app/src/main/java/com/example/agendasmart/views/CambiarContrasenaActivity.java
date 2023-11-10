@@ -28,6 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import es.dmoral.toasty.Toasty;
+
 public class CambiarContrasenaActivity extends AppCompatActivity {
 
     TextView textView;
@@ -56,15 +58,15 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
                 String confirmPass = confirmpass.getText().toString().trim();
 
                 if(actualPass.equals("")){
-                    actualpass.setError("Campo requerido");
+                    Toasty.error(CambiarContrasenaActivity.this, "Ingrese la contraseña actual", Toast.LENGTH_SHORT).show();
                 } else if (newPass.equals("")) {
-                    newpass.setError("Campo requerido");
+                    Toasty.error(CambiarContrasenaActivity.this, "Ingrese la nueva contraseña", Toast.LENGTH_SHORT).show();
                 } else if (confirmPass.equals("")) {
-                    confirmpass.setError("Campo requerido");
+                    Toasty.error(CambiarContrasenaActivity.this, "Confirme la contraseña", Toast.LENGTH_SHORT).show();
                 } else if (!newPass.equals(confirmPass)) {
-                    Toast.makeText(CambiarContrasenaActivity.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                    Toasty.error(CambiarContrasenaActivity.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 } else if (newPass.length()<6) {
-                    newpass.setError("La contraseña debe tener al menos 6 caracteres");
+                    Toasty.error(CambiarContrasenaActivity.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
                 }else {
                     Actualizar_password(actualPass, newPass);
                 }
@@ -104,7 +106,7 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        Toast.makeText(CambiarContrasenaActivity.this, "Contraseña actualizada", Toast.LENGTH_SHORT).show();
+                                        Toasty.success(CambiarContrasenaActivity.this, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show();
                                         firebaseAuth.signOut();
                                         Intent intent = new Intent(CambiarContrasenaActivity.this, InicioSesionActivity.class)
                                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -116,7 +118,7 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         progressDialog.dismiss();
-                                        Toast.makeText(CambiarContrasenaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toasty.error(CambiarContrasenaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     }
@@ -124,7 +126,7 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(CambiarContrasenaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toasty.error(CambiarContrasenaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -132,7 +134,7 @@ public class CambiarContrasenaActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(CambiarContrasenaActivity.this, "La contraseña actual no es la correcta", Toast.LENGTH_SHORT).show();
+                        Toasty.error(CambiarContrasenaActivity.this, "La contraseña actual no es la correcta", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -23,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import es.dmoral.toasty.Toasty;
+
 public class InicioSesionActivity extends AppCompatActivity {
 
     EditText Correo, Contraseña;
@@ -82,11 +84,11 @@ public class InicioSesionActivity extends AppCompatActivity {
         contraseña = Contraseña.getText().toString();
 
         if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
-            Toast.makeText(this, "Correo inválido", Toast.LENGTH_SHORT).show();
+            Toasty.error(InicioSesionActivity.this, "Correo invalido", Toasty.LENGTH_SHORT).show();
         }
 
         else if (TextUtils.isEmpty(contraseña)){
-            Toast.makeText(this, "Ingrese contraseña", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Ingrese contraseña", Toast.LENGTH_SHORT).show();
         }
         else {
             LoginDeUsuario();
@@ -105,13 +107,13 @@ public class InicioSesionActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             progressDialog.dismiss();
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Toasty.info(InicioSesionActivity.this, "Bienvenido(a)\n"+user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(InicioSesionActivity.this,LobbyActivity.class));
-                            Toast.makeText(InicioSesionActivity.this, "Bienvenido(a): "+user.getEmail(), Toast.LENGTH_SHORT).show();
                             finish();
                         }
                         else {
                             progressDialog.dismiss();
-                            Toast.makeText(InicioSesionActivity.this, "Verifique si el correo y contraseña son los correctos", Toast.LENGTH_SHORT).show();
+                            Toasty.error(InicioSesionActivity.this, "Verifique si el correo y contraseña son los correctos", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -119,7 +121,7 @@ public class InicioSesionActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
 
-                        Toast.makeText(InicioSesionActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toasty.error(InicioSesionActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });

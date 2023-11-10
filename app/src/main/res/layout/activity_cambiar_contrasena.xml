@@ -106,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cursorColor="@color/black"
+            app:passwordToggleEnabled="true"
             android:background="@drawable/stroke_btm"
             app:hintTextColor="@color/black">
 
@@ -119,7 +120,7 @@
                 android:layout_marginTop="15dp"
                 android:hint="@string/contraseñaActual"
                 android:fontFamily="@font/museomoderno"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:drawablePadding="8dp"/>
 
@@ -144,7 +145,7 @@
                 android:drawableEnd="@drawable/more"
                 android:hint="@string/contraseñaNueva"
                 android:fontFamily="@font/museomoderno"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:drawablePadding="8dp"/>
 
@@ -169,7 +170,7 @@
                 android:drawableEnd="@drawable/more"
                 android:hint="@string/confirmarContraseña"
                 android:fontFamily="@font/museomoderno"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:drawablePadding="8dp"/>
 

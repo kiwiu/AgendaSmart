@@ -23,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 public class AgregarTareaActivity extends AppCompatActivity {
 
     TextView uid_usuario, correo_usuario, fecha_hora_actual, fecha, estado;
@@ -55,25 +57,37 @@ public class AgregarTareaActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int anioSeleccionado, int mesSeleccionado, int diaSeleccionado) {
 
-                        String diaFormateado, mesFormateado;
+                        // Obtén la fecha actual
+                        Calendar fechaActual = Calendar.getInstance();
 
-                        /*para un mejor formato, poner un 0*/
-                        if(diaSeleccionado < 10){
-                            diaFormateado = "0" + String.valueOf(diaSeleccionado);
-                        }else{
-                            diaFormateado = String.valueOf(diaSeleccionado);
+                        // Crear una instancia de la fecha seleccionada
+                        Calendar fechaSeleccionada = Calendar.getInstance();
+                        fechaSeleccionada.set(anioSeleccionado, mesSeleccionado, diaSeleccionado);
+
+                        // Verificar si la fecha seleccionada es anterior a la actual
+                        if (fechaSeleccionada.before(fechaActual)) {
+                            // Muestra un mensaje o realiza la acción que desees cuando la fecha es anterior
+                            Toasty.error(AgregarTareaActivity.this, "No se pueden seleccionar fechas anteriores", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Formatea y muestra la fecha
+                            String diaFormateado, mesFormateado;
+                            if (diaSeleccionado < 10) {
+                                diaFormateado = "0" + String.valueOf(diaSeleccionado);
+                            } else {
+                                diaFormateado = String.valueOf(diaSeleccionado);
+                            }
+
+                            int Mes = mesSeleccionado + 1;
+
+                            if (Mes < 10) {
+                                mesFormateado = "0" + String.valueOf(Mes);
+                            } else {
+                                mesFormateado = String.valueOf(Mes);
+                            }
+
+                            /*Mostrar fecha*/
+                            fecha.setText(diaFormateado + "/" + mesFormateado + "/" + anioSeleccionado);
                         }
-
-                        int Mes = mesSeleccionado + 1;
-
-                        if(Mes < 10){
-                            mesFormateado = "0"+ String.valueOf(Mes);
-                        }else{
-                            mesFormateado = String.valueOf(Mes);
-                        }
-
-                        /*Mostrar fecha*/
-                        fecha.setText(diaFormateado + "/" + mesFormateado + "/" + anioSeleccionado);
                     }
                 },anio, mes, dia);
                 datePickerDialog.show();
@@ -135,24 +149,33 @@ public class AgregarTareaActivity extends AppCompatActivity {
         String Estado = estado.getText().toString();
 
         /*validar datos*/
+        if (!Uid_usuario.equals("") && !Correo_usuario.equals("") && !FechaHoraActual.equals("") &&
+                !Titulo.equals("") && !Descripcion.equals("") && !Fecha.equals("") && !Estado.equals("")) {
 
-        Tarea tarea = new Tarea(Correo_usuario + "/" + FechaHoraActual,
-                Uid_usuario,
-                Correo_usuario,
-                FechaHoraActual,
-                Titulo,
-                Descripcion,
-                Fecha,
-                Estado);
+            Tarea tarea = new Tarea(Correo_usuario + "/" + FechaHoraActual,
+                    Uid_usuario,
+                    Correo_usuario,
+                    FechaHoraActual,
+                    Titulo,
+                    Descripcion,
+                    Fecha,
+                    Estado);
 
-        String Tarea_usuario = BD_Firebase.push().getKey();
-        String Nombre_BD = "Tareas_publicadas";
+            String Tarea_usuario = BD_Firebase.push().getKey();
+            String Nombre_BD = "Tareas_publicadas";
 
-        BD_Firebase.child(Nombre_BD).child(Tarea_usuario).setValue(tarea);
+            BD_Firebase.child(Nombre_BD).child(Tarea_usuario).setValue(tarea);
 
-        Toast.makeText(this, "Nota agregada con éxito", Toast.LENGTH_SHORT).show();
+            Toasty.success(this, "Tarea agregada con éxito", Toast.LENGTH_SHORT).show();
 
-        onBackPressed();
+            onBackPressed();
+
+        }
+        else{
+            Toasty.error(this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 }

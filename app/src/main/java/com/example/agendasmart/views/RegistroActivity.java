@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+import es.dmoral.toasty.Toasty;
+
 public class RegistroActivity extends AppCompatActivity {
 
     TextView inicioSesion;
@@ -88,21 +90,21 @@ public class RegistroActivity extends AppCompatActivity {
         confirmarcontraseña = ConfirmarContraseña.getText().toString();
 
         if (TextUtils.isEmpty(nombre)){
-            Toast.makeText(this, "Ingrese nombre", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Ingrese nombre", Toast.LENGTH_SHORT).show();
         }
         else if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
-            Toast.makeText(this, "Ingrese correo", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Ingrese correo", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(contraseña)){
-            Toast.makeText(this, "Ingrese contraseña", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Ingrese contraseña", Toast.LENGTH_SHORT).show();
 
         }
         else if (TextUtils.isEmpty(confirmarcontraseña)){
-            Toast.makeText(this, "Confirme contraseña", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Confirme contraseña", Toast.LENGTH_SHORT).show();
 
         }
         else if (!contraseña.equals(confirmarcontraseña)){
-            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
         }
         else {
             CrearCuenta();
@@ -125,7 +127,7 @@ public class RegistroActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(RegistroActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toasty.error(RegistroActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -151,7 +153,7 @@ public class RegistroActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         progressDialog.dismiss();
-                        Toast.makeText(RegistroActivity.this, "Cuenta creada con éxito", Toast.LENGTH_SHORT).show();
+                        Toasty.success(RegistroActivity.this, "Cuenta creada con éxito", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegistroActivity.this, InicioSesionActivity.class));
                         finish();
                     }
@@ -159,7 +161,7 @@ public class RegistroActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull  Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(RegistroActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toasty.error(RegistroActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 

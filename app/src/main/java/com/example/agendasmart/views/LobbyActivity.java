@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import es.dmoral.toasty.Toasty;
+
 public class LobbyActivity extends AppCompatActivity {
 
     ImageButton acercade, perfil, configuracion, salir;
@@ -99,8 +101,9 @@ public class LobbyActivity extends AppCompatActivity {
 
     private void SalirApp() {
         firebaseAuth.signOut();
+        Toasty.success(LobbyActivity.this, "Sesión cerrada correctamente", Toasty.LENGTH_SHORT).show();
         startActivity(new Intent(LobbyActivity.this, InicioActivity.class));
-        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
