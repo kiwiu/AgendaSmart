@@ -78,8 +78,6 @@ public class RegistroActivity extends AppCompatActivity {
             }
         });
 
-        //inicioSesion.setOnClickListener( v -> startActivity(new Intent(RegistroActivity.this, InicioSesionActivity.class)));
-        //btnRegistrarse.setOnClickListener( v -> startActivity(new Intent(RegistroActivity.this, InicioSesionActivity.class)));
         btnCancelar.setOnClickListener( v -> startActivity(new Intent(RegistroActivity.this, InicioActivity.class)));
     }
 
@@ -145,6 +143,13 @@ public class RegistroActivity extends AppCompatActivity {
         Datos.put("correo", correo);
         Datos.put("nombres", nombre);
         Datos.put("password", contraseña);
+
+        Datos.put("apellidos", "");
+        Datos.put("edad", "");
+        Datos.put("domicilio", "");
+        Datos.put("profesion", "");
+        Datos.put("telefono", "");
+        Datos.put("imagen", "");
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Usuarios");
         databaseReference.child(uid)

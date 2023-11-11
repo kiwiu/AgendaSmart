@@ -130,6 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imagen_Perfil"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/image">
@@ -168,6 +169,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
        <TextView
+           android:id="@+id/correo_Perfil"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:hint="@string/CorreoUsuario"
@@ -175,6 +177,7 @@
            android:fontFamily="@font/museomoderno"/>
 
         <EditText
+            android:id="@+id/nombres_Perfil"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:background="@drawable/stroke_btm"
@@ -188,6 +191,7 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/apellidos_Perfil"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:background="@drawable/stroke_btm"
@@ -201,6 +205,7 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/edad_Perfil"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:background="@drawable/stroke_btm"
@@ -214,6 +219,7 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/domicilio_Perfil"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:background="@drawable/stroke_btm"
@@ -227,6 +233,7 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/profesion_Perfil"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:background="@drawable/stroke_btm"
@@ -240,6 +247,7 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/telefono_Perfil"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:background="@drawable/stroke_btm"
@@ -253,6 +261,7 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <Button
+            android:id="@+id/btnActualizarPerfil"
             android:layout_width="239dp"
             android:layout_height="50dp"
             android:background="@drawable/btn_inicio"

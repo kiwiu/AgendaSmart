@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.agendasmart.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +30,7 @@ import es.dmoral.toasty.Toasty;
 public class LobbyActivity extends AppCompatActivity {
 
     ImageButton acercade, perfil, configuracion, salir;
+    ImageView iv_foto_perfil;
 
     TextView tv_nombre_usuario,tv_correo_usuario, tv_ui;
 
@@ -46,6 +49,7 @@ public class LobbyActivity extends AppCompatActivity {
 
         tv_nombre_usuario = findViewById(R.id.tv_nombre_usuario);
         tv_correo_usuario = findViewById(R.id.tv_correo_usuario);
+        iv_foto_perfil = findViewById(R.id.iv_foto_perfil);
         tv_ui =  findViewById(R.id.tv_uid);
 
         Usuarios = FirebaseDatabase.getInstance().getReference("Usuarios");
@@ -127,13 +131,19 @@ public class LobbyActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
+                    //obtenemos los datos del usuario
                     String uid = "" + snapshot.child("uid").getValue();
                     String nombre = "" + snapshot.child("nombres").getValue();
                     String correo = "" + snapshot.child("correo").getValue();
+                    String imagen = "" + snapshot.child("imagen").getValue();
 
+                    //asignamos los datos a los campos
                     tv_ui.setText(uid);
                     tv_nombre_usuario.setText(nombre);
                     tv_correo_usuario.setText(correo);
+
+                    //cargamos la imagen
+                    ObtenerImagen(imagen);
                 }
             }
 
@@ -142,6 +152,16 @@ public class LobbyActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void ObtenerImagen(String imagen) {
+        try {
+            //cargamos la imagen
+            Glide.with(getApplicationContext()).load(imagen).placeholder(R.drawable.image).into(iv_foto_perfil);
+        }catch (Exception e){
+            //si hay error cargamos la imagen por defecto
+            Glide.with(getApplicationContext()).load(R.drawable.image).into(iv_foto_perfil);
+        }
     }
 
     private void acercade() {
