@@ -107,7 +107,7 @@ public class MisTareasActivity extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        Toasty.info(MisTareasActivity.this, "on item click", Toasty.LENGTH_SHORT).show();
+                        Toasty.info(MisTareasActivity.this, "on item Long click", Toasty.LENGTH_SHORT).show();
                     }
                 });
                 return viewHolder_tarea;
