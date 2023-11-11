@@ -246,19 +246,35 @@
             android:drawablePadding="8dp"
             android:textCursorDrawable="@drawable/cursor_color"/>
 
-        <EditText
-            android:id="@+id/telefono_Perfil"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="320dp"
-            android:layout_height="48dp"
-            android:background="@drawable/stroke_btm"
-            android:layout_marginTop="10dp"
-            android:hint="@string/Telefono"
-            android:fontFamily="@font/museomoderno"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textSize="14sp"
+            android:layout_height="wrap_content"
             android:drawablePadding="8dp"
-            android:textCursorDrawable="@drawable/cursor_color"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/telefono_Perfil"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:background="@drawable/stroke_btm"
+                android:hint="@string/Telefono"
+                android:fontFamily="@font/museomoderno"
+                android:padding="15dp"
+                android:textSize="14sp"
+                android:textCursorDrawable="@drawable/cursor_color"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/Editar_telefono"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/telefono">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <Button
             android:id="@+id/btnActualizarPerfil"

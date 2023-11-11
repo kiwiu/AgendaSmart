@@ -82,6 +82,15 @@
     <string name="contraseñaNueva">Contraseña nueva</string>
     <string name="confirmarContraseña">Confirmar contraseña</string>
 
+    <string name="Establecer_Telefono">Escriba su telefono</string>
+    <string name="btn_Aceptar_Telefono">Aceptar</string>
+
+    <string name="ElegirImagen">Elegir imagen desde</string>
+    <string name="ElegirImagenGaleria">Desde galeria</string>
+    <string name="ElegirImagenCamara">Desde camara</string>
+    <string name="ElegirImagenOpcion">Elegir imagen</string>
+    <string name="actualizarImagen">Actualizar imagen</string>
+
     <string name="idContacto">Id Contacto</string>
     <string name="UidUsuario">Id Usuario</string>
     <string name="NombreContacto">Nombres</string>
