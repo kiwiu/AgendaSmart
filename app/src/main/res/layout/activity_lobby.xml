@@ -60,6 +60,16 @@
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/tv_uid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museomoderno"
+                    android:text="@string/NombreUsuario"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+                <TextView
                     android:id="@+id/tv_nombre_usuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -39,6 +39,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/id_tarea_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/itenid"
@@ -47,6 +48,7 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/uid_usuario_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/uidUsuario"
@@ -55,6 +57,7 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/correo_usuario_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/CorreoUsuario"
@@ -63,6 +66,7 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/titulo_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/Tituloiten"
@@ -70,6 +74,7 @@
                 android:textSize="20sp"/>
 
             <TextView
+                android:id="@+id/descripcion_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/Descripcioniten"
@@ -77,6 +82,7 @@
                 android:textSize="16sp"/>
 
             <TextView
+                android:id="@+id/fecha_hora_registro_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/fechaiten"
@@ -84,14 +90,15 @@
                 android:textSize="14sp"/>
 
             <TextView
+                android:id="@+id/fecha_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/formatoiten"
                 android:fontFamily="@font/museomoderno_semibold"
-                android:textSize="16sp"
-                android:visibility="gone"/>
+                android:textSize="16sp"/>
 
             <TextView
+                android:id="@+id/estado_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/nofinalizadaiten"

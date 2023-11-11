@@ -29,7 +29,7 @@ public class LobbyActivity extends AppCompatActivity {
 
     ImageButton acercade, perfil, configuracion, salir;
 
-    TextView tv_nombre_usuario,tv_correo_usuario;
+    TextView tv_nombre_usuario,tv_correo_usuario, tv_ui;
 
     DatabaseReference Usuarios;
     FirebaseAuth firebaseAuth;
@@ -46,6 +46,7 @@ public class LobbyActivity extends AppCompatActivity {
 
         tv_nombre_usuario = findViewById(R.id.tv_nombre_usuario);
         tv_correo_usuario = findViewById(R.id.tv_correo_usuario);
+        tv_ui =  findViewById(R.id.tv_uid);
 
         Usuarios = FirebaseDatabase.getInstance().getReference("Usuarios");
         firebaseAuth = FirebaseAuth.getInstance();
@@ -83,7 +84,7 @@ public class LobbyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 /*esto e para obtener el texto de lo textview*/
-                String uid_usuario = tv_nombre_usuario.getText().toString();
+                String uid_usuario = tv_ui.getText().toString();
                 String correo_usuario = tv_correo_usuario.getText().toString();
 
                 /*pasar los datos a la actividad de agregar_tarea*/
@@ -126,9 +127,11 @@ public class LobbyActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
+                    String uid = "" + snapshot.child("uid").getValue();
                     String nombre = "" + snapshot.child("nombres").getValue();
                     String correo = "" + snapshot.child("correo").getValue();
 
+                    tv_ui.setText(uid);
                     tv_nombre_usuario.setText(nombre);
                     tv_correo_usuario.setText(correo);
                 }
