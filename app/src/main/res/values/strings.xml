@@ -99,4 +99,9 @@
     <string name="CorreoContacto">Correo</string>
     <string name="EdadContacto">Edad</string>
 
+    <string name="ImportanteTXT">Lee con atención</string>
+    <string name="MensajeTXT_Aut">Para realizar la eliminacion de su cuenta, tendrá que cerrar sesión, luego logearse, y en un plazo de 5 minutos podra eliminar su cuenta de nuestra aplicación, una vez pasado ese tiempo , tendrá que realizar nuevamente los pasos mencionados.</string>
+    <string name="btn_Entendido_Aut">Entendido</string>
+    <string name="btn_Cerrar_Sesion_Aut">Cerrar sesión</string>
+
 </resources>

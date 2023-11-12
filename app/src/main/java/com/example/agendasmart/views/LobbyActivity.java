@@ -81,7 +81,20 @@ public class LobbyActivity extends AppCompatActivity {
         });
 
         perfil.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, ActualizarPerfilActivity.class)));
-        configuracion.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, EliminarCuentaActivity.class)));
+        configuracion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*esto e para obtener el texto de lo textview*/
+                String uid_usuario = tv_ui.getText().toString();
+                String correo_usuario = tv_correo_usuario.getText().toString();
+
+                /*pasar los datos a la actividad de agregar_tarea*/
+                Intent intent = new Intent(LobbyActivity.this, EliminarCuentaActivity.class);
+                intent.putExtra("uid", uid_usuario);
+                intent.putExtra("correo", correo_usuario);
+                startActivity(intent);
+            }
+        });
 
 
         btn_agregar_tarea.setOnClickListener(new View.OnClickListener() {

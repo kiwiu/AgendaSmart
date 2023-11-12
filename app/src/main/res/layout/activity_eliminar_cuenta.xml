@@ -81,6 +81,23 @@
                 android:text="@string/Title"
                 android:textColor="@color/Textcolor"
                 android:textSize="40sp" />
+            <TextView
+                android:id="@+id/Gmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/museomoderno"
+                android:text="uid"
+                android:textColor="@color/Textcolor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/uid_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/museomoderno"
+                android:text="uid"
+                android:textColor="@color/Textcolor"
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 

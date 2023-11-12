@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_gravity="center"
+    >
+
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/museomoderno"
+        android:gravity="center"
+        android:text="@string/ImportanteTXT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <TextView
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/museomoderno"
+        android:gravity="center"
+        android:text="@string/MensajeTXT_Aut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <Button
+        android:id="@+id/btn_Entendido_Aut"
+        android:text="@string/btn_Entendido_Aut"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/museomoderno"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_Cerrar_Sesion_Aut"
+        android:text="@string/btn_Cerrar_Sesion_Aut"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/museomoderno"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+</androidx.appcompat.widget.LinearLayoutCompat >
