@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.ActualizarImagenPerfilActivity">
+
+    <LinearLayout
+        android:id="@+id/inicio_view"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/spindle"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="6"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/Title"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/salir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:text="@string/actualizarImagen"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/imagenInicio"
+                    android:layout_width="228dp"
+                    android:layout_height="228dp"
+                    android:src="@drawable/image_color"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/Title"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vector_view"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:background="@drawable/vector" />
+
+    <LinearLayout
+        android:id="@+id/botones_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnEliminarCuenta"
+            android:layout_width="320dp"
+            android:layout_height="72dp"
+            android:background="@drawable/btn_option_2"
+            android:drawableStart="@drawable/galeria"
+            android:fontFamily="@font/museomoderno"
+            android:paddingHorizontal="30dp"
+            android:text="@string/ElegirImagen"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="320dp"
+            android:drawableStart="@drawable/update_btn"
+            android:layout_height="72dp"
+            android:paddingHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_inicio"
+            android:fontFamily="@font/museomoderno"
+            android:text="@string/actualizarImagen"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</LinearLayout>
