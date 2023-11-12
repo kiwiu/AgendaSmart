@@ -150,6 +150,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view">
 
         <ImageButton
+            android:id="@+id/Editar_Imagen"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:background="?attr/selectableItemBackgroundBorderless"

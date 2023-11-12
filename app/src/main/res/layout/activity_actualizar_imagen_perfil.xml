@@ -73,7 +73,7 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/imagenInicio"
+                    android:id="@+id/imagenPerfilActual"
                     android:layout_width="228dp"
                     android:layout_height="228dp"
                     android:src="@drawable/image_color"
@@ -99,7 +99,7 @@
         android:layout_marginTop="20dp">
 
         <Button
-            android:id="@+id/btnEliminarCuenta"
+            android:id="@+id/btnElegirImagen"
             android:layout_width="320dp"
             android:layout_height="72dp"
             android:background="@drawable/btn_option_2"
@@ -112,7 +112,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnCancelar"
+            android:id="@+id/btnActualizarImagen"
             android:layout_width="320dp"
             android:drawableStart="@drawable/update_btn"
             android:layout_height="72dp"

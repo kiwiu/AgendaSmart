@@ -37,6 +37,7 @@
                 android:layout_gravity="center"/>
             
             <Button
+                android:id="@+id/btnGaleria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,11 +62,12 @@
                 android:layout_gravity="center"/>
 
             <Button
+                android:id="@+id/btnCamara"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/btn_inicio"
-                android:text="@string/ElegirImagenGaleria"
+                android:text="@string/ElegirImagenCamara"
                 android:textAllCaps="false"
                 android:layout_marginBottom="10dp"/>
 

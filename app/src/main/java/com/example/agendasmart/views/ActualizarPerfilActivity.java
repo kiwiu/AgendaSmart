@@ -32,7 +32,7 @@ import es.dmoral.toasty.Toasty;
 
 public class ActualizarPerfilActivity extends AppCompatActivity {
 
-    ImageView imagen_Perfil,Editar_telefono;
+    ImageView imagen_Perfil,Editar_telefono,Editar_Imagen;
     TextView correo_Perfil,telefono_Perfil;
     EditText nombres_Perfil, apellidos_Perfil, edad_Perfil,
             domicilio_Perfil, profesion_Perfil;
@@ -66,6 +66,13 @@ public class ActualizarPerfilActivity extends AppCompatActivity {
             }
         });
 
+        Editar_Imagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActualizarPerfilActivity.this, ActualizarImagenPerfilActivity.class));
+            }
+        });
+
         btnBack = (ImageButton) findViewById(R.id.btnBack);
         btnActualizarContrasena = (ImageButton) findViewById(R.id.btnActualizarContraseña);
 
@@ -90,6 +97,7 @@ public class ActualizarPerfilActivity extends AppCompatActivity {
         profesion_Perfil = (EditText) findViewById(R.id.profesion_Perfil);
         telefono_Perfil = (TextView) findViewById(R.id.telefono_Perfil);
         Editar_telefono = findViewById(R.id.Editar_telefono);
+        Editar_Imagen = findViewById(R.id.Editar_Imagen);
 
         dialog_telefono = new Dialog(ActualizarPerfilActivity.this);
 
