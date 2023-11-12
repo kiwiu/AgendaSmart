@@ -114,11 +114,10 @@ public class EliminarCuentaActivity extends AppCompatActivity {
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
-                            finish();
                             Toasty.info(EliminarCuentaActivity.this, "Se ha eliminado su cuenta con exito", Toast.LENGTH_SHORT).show();
-                        }else{
+                            finish();
+                            }else{
                             Toasty.info(EliminarCuentaActivity.this, "Ha ocurrido un problema", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -134,8 +133,7 @@ public class EliminarCuentaActivity extends AppCompatActivity {
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toasty.info(EliminarCuentaActivity.this, "Cancelado por el usuario", Toast.LENGTH_SHORT).show();
-
+                Toasty.info(EliminarCuentaActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
             }
         });
 
