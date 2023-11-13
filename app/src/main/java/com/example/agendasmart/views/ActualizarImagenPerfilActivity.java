@@ -185,8 +185,7 @@ public class ActualizarImagenPerfilActivity extends AppCompatActivity {
         btnGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SeleccionarImagenGaleria();
-                dialog_elejir_imagen.dismiss();
+
                 if (ContextCompat.checkSelfPermission(ActualizarImagenPerfilActivity.this,
                         Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED) {
                     //Permiso aceptado
@@ -194,7 +193,7 @@ public class ActualizarImagenPerfilActivity extends AppCompatActivity {
                     dialog_elejir_imagen.dismiss();
                 }else {
                     //Permiso denegado
-                    SolicitudPermisoGaleria.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    SolicitudPermisoGaleria.launch(Manifest.permission.READ_MEDIA_IMAGES);
                     dialog_elejir_imagen.dismiss();
                 }
             }
