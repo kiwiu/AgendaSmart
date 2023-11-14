@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.ActualizarTareaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/spindle"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/Title"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/salir" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/museomoderno_semibold"
+                        android:text="@string/nuevatarea"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_actualizar_tarea"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/Title"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/guardar" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@drawable/vector_actualizar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:contentDescription="@string/fecha"
+                android:layout_height="80dp"
+                android:src="@drawable/reloj"/>
+
+            <TextView
+                android:id="@+id/uid_usuario_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Nombre usuario"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/museomoderno_semibold"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/itenid_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/itenid_A"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/museomoderno_semibold"/>
+
+            <TextView
+                android:id="@+id/correo_usuario_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/CorreoUsuario"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:textSize="16sp"
+                android:fontFamily="@font/museomoderno_semibold"/>
+
+            <TextView
+                android:id="@+id/fecha_creacion_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/FechaCreacion"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/museomoderno_semibold"/>
+
+            <TextView
+                android:id="@+id/fecha_hora_actual_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/fecha"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/museomoderno_semibold"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Tarea_Finalizada"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:background="#16A085"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Tarea_No_Finalizada"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:layout_marginStart="5dp"
+                    android:background="#E74C3C"/>
+
+
+                <TextView
+                    android:id="@+id/estado_A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nofinalizada"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/museomoderno_semibold"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <EditText
+                android:id="@+id/titulo_A"
+                android:layout_width="320dp"
+                android:layout_height="67dp"
+                android:background="@drawable/stroke_btm"
+                android:layout_marginTop="15dp"
+                android:hint="@string/Titulo"
+                android:fontFamily="@font/museomoderno"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/descripcion_A"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_btm"
+                android:layout_marginTop="15dp"
+                android:hint="@string/Descripcion"
+                android:minHeight="170dp"
+                android:gravity="start"
+                android:fontFamily="@font/museomoderno"
+                android:padding="16dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="end"
+                android:paddingVertical="10dp">
+
+                <Button
+                    android:id="@+id/btn_calendario_A"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_inicio"
+                    android:text="@string/Fecha_A"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:drawableStart="@drawable/calendario"
+                    android:paddingHorizontal="8dp"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/fecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:hint="@string/formato"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/Estado_nuevo"
+                android:text="@string/estadoNuevo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Spinner
+                android:id="@+id/Spinner_estado"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

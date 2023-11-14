@@ -104,4 +104,25 @@
     <string name="btn_Entendido_Aut">Entendido</string>
     <string name="btn_Cerrar_Sesion_Aut">Cerrar sesión</string>
 
+    <string name="Opcion">Elija una opción</string>
+    <string name="Eliminar">Eliminar</string>
+    <string name="ActualizarT">Actualizar</string>
+
+
+    <string name="itenid_A">Tarea</string>
+    <string name="uidUsuario_A">Id Usuario</string>
+    <string name="Fecha_A">Fecha</string>
+    <string name="fechaiten_A">Fecha</string>
+    <string name="Descripcioniten_A">Descripción</string>
+    <string name="Tituloiten_A">Titulo</string>
+    <string name="fechalimiteiten_A">Fecha</string>
+    <string name="formatoiten_A">DD/MM/YYYY</string>
+    <string name="nofinalizadaiten_A">No finalizada</string>
+    <string name="estadoNuevo">Estado:</string>
+
+    <string-array name="Estados_tarea">
+        <item>"No Finalizada"</item>
+        <item>"Finalizada"</item>
+    </string-array>
+
 </resources>
