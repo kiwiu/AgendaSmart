@@ -41,7 +41,7 @@ public class ActualizarTareaActivity extends AppCompatActivity implements Adapte
     ImageButton btnBack, btn_actualizar_tarea;
 
     //Aqui se guarda los datos del registro seleccionado
-    String id_tarea_R , uid_usuario_R , correo_usuario_R, fecha_registro_R, titulo_R, descripcion_R, fecha_R, estado_R;
+    String id_tarea_R , correo_usuario_R, fecha_registro_R, titulo_R, descripcion_R, fecha_R, estado_R;
 
     ImageView Tarea_Finalizada, Tarea_No_Finalizada;
 

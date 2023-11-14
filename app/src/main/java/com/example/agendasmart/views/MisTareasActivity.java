@@ -106,6 +106,7 @@ public class MisTareasActivity extends AppCompatActivity {
                         tarea.getDescripcion(),
                         tarea.getFecha_nota(),
                         tarea.getEstado()
+
                 );
             }
 
@@ -117,7 +118,24 @@ public class MisTareasActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int position) {
                         Toasty.info(MisTareasActivity.this, "on item click", Toasty.LENGTH_SHORT).show();
+                        //Obtener los datos de la nota seleccionada
+                        String id_tarea = getItem(position).getId_tarea();
+                        String correo_usuario = getItem(position).getCorreo_usuario();
+                        String fecha_registro = getItem(position).getFecha_horaactual();
+                        String titulo = getItem(position).getTitulo();
+                        String descripcion = getItem(position).getDescripcion();
+                        String fecha_nota = getItem(position).getFecha_nota();
+                        String estado = getItem(position).getEstado();
 
+                        Intent intent = new Intent(MisTareasActivity.this, DetalleTareaActivity.class);
+                        intent.putExtra("id_tarea", id_tarea);
+                        intent.putExtra("correo_usuario", correo_usuario);
+                        intent.putExtra("fecha_registro", fecha_registro);
+                        intent.putExtra("titulo", titulo);
+                        intent.putExtra("descripcion", descripcion);
+                        intent.putExtra("fecha_nota", fecha_nota);
+                        intent.putExtra("estado", estado);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -125,7 +143,6 @@ public class MisTareasActivity extends AppCompatActivity {
 
                         //Obtener los datos de la nota seleccionada
                         String id_tarea = getItem(position).getId_tarea();
-                       // String uid_usuario = getItem(position).getUid_usuario();
                         String correo_usuario = getItem(position).getCorreo_usuario();
                         String fecha_registro = getItem(position).getFecha_horaactual();
                         String titulo = getItem(position).getTitulo();
