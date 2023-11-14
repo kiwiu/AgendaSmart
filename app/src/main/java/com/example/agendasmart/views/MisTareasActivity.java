@@ -117,7 +117,6 @@ public class MisTareasActivity extends AppCompatActivity {
                 viewHolder_tarea.setOnclickListener(new ViewHolder_Tarea.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toasty.info(MisTareasActivity.this, "on item click", Toasty.LENGTH_SHORT).show();
                         //Obtener los datos de la nota seleccionada
                         String id_tarea = getItem(position).getId_tarea();
                         String correo_usuario = getItem(position).getCorreo_usuario();
@@ -222,12 +221,12 @@ public class MisTareasActivity extends AppCompatActivity {
                         for (DataSnapshot ds : snapshot.getChildren()){
                             ds.getRef().removeValue();
                         }
-                        Toast.makeText(MisTareasActivity.this, "Tarea eliminada", Toast.LENGTH_SHORT).show();
+                        Toasty.error(MisTareasActivity.this, "Tarea eliminada", Toasty.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                        Toast.makeText(MisTareasActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toasty.error(MisTareasActivity.this, error.getMessage(), Toasty.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -235,7 +234,7 @@ public class MisTareasActivity extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(MisTareasActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
+                Toasty.info(MisTareasActivity.this, "Cancelado", Toasty.LENGTH_SHORT).show();
             }
         });
 

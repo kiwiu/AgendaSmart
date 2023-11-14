@@ -221,7 +221,7 @@ public class ActualizarTareaActivity extends AppCompatActivity implements Adapte
                     ds.getRef().child("estado").setValue(estadoActualizar);
                 }
 
-                Toast.makeText(ActualizarTareaActivity.this, "Tarea actualizada con éxito", Toast.LENGTH_SHORT).show();
+                Toasty.info(ActualizarTareaActivity.this, "Tarea actualizada con éxito", Toasty.LENGTH_SHORT).show();
                 onBackPressed();
 
             }

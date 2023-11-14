@@ -74,6 +74,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/Title"
                     android:scaleType="centerInside"
+                    android:visibility="gone"
                     android:src="@drawable/eliminartodo" />
 
             </LinearLayout>
@@ -92,6 +93,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/Title"
                     android:scaleType="centerInside"
+                    android:visibility="gone"
                     android:src="@drawable/filtrar" />
 
             </LinearLayout>

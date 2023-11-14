@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import es.dmoral.toasty.Toasty;
+
 public class DetalleTareaActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
@@ -142,7 +144,7 @@ public class DetalleTareaActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Toast.makeText(DetalleTareaActivity.this, "Se ha añadido a tareas importantes", Toast.LENGTH_SHORT).show();
+                            Toasty.info(DetalleTareaActivity.this, "Se ha añadido a tareas importantes", Toasty.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -168,7 +170,7 @@ public class DetalleTareaActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Toast.makeText(DetalleTareaActivity.this, "La tarea ya no es importante", Toast.LENGTH_SHORT).show();
+                            Toasty.info(DetalleTareaActivity.this, "La tarea ya no es importante", Toasty.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
