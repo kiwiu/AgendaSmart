@@ -23,6 +23,18 @@
         android:theme="@style/Theme.AgendaSmart"
         tools:targetApi="31">
         <activity
+            android:name=".views.ActualizarContactoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.DetalleContactoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.AgregarContactoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.MisContactosActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.ActualizarTareaActivity"
             android:exported="false" />
         <activity

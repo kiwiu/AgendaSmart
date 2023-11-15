@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.AgregarContactoActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/spindle"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="6"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/Title"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/salir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:text="@string/AgregarContacto"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/vector_actualizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_below="@+id/linearLayout">
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/museomoderno_semibold"
+            android:hint="@string/uidUsuario"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/contactos_agregar"/>
+
+        <EditText
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="15dp"
+            android:hint="@string/nombreContacto"
+            android:fontFamily="@font/museomoderno"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textSize="14sp"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <EditText
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="15dp"
+            android:hint="@string/apellidoContacto"
+            android:fontFamily="@font/museomoderno"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textSize="14sp"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <EditText
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="15dp"
+            android:hint="@string/correoContacto"
+            android:fontFamily="@font/museomoderno"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textSize="14sp"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/telefono_Perfil"
+                android:layout_width="258dp"
+                android:layout_height="58dp"
+                android:background="@drawable/stroke_btm"
+                android:hint="@string/Telefono"
+                android:fontFamily="@font/museomoderno"
+                android:padding="15dp"
+                android:textSize="14sp"
+                android:textCursorDrawable="@drawable/cursor_color"/>
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/Title"
+                android:scaleType="centerInside"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/telefono"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <EditText
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="15dp"
+            android:hint="@string/edadContacto"
+            android:fontFamily="@font/museomoderno"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textSize="14sp"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <EditText
+            android:layout_width="320dp"
+            android:layout_height="58dp"
+            android:background="@drawable/stroke_btm"
+            android:layout_marginTop="15dp"
+            android:hint="@string/direccionContacto"
+            android:fontFamily="@font/museomoderno"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textSize="14sp"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <Button
+            android:id="@+id/btnActualizarPerfil"
+            android:layout_width="239dp"
+            android:layout_height="57dp"
+            android:background="@drawable/btn_inicio"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/guardar_btn"
+            android:text="@string/guardarContacto"
+            android:textAllCaps="false"
+            android:fontFamily="@font/museomoderno_semibold"
+            android:paddingHorizontal="30dp"/>
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

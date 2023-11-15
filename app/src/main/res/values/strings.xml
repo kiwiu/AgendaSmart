@@ -99,6 +99,15 @@
     <string name="CorreoContacto">Correo</string>
     <string name="EdadContacto">Edad</string>
 
+    <string name="idContactoActualizar">Id Contacto</string>
+    <string name="UidUsuarioActualizar">Id Usuario</string>
+    <string name="NombreContactoActualizar">Nombres</string>
+    <string name="ApellidoContactoActualizar">Apellidos</string>
+    <string name="TelefonoContactoActualizar">Telefono</string>
+    <string name="CorreoContactoActualizar">Correo</string>
+    <string name="EdadContactoActualizar">Edad</string>
+    <string name="DireccionContactoActualizar">Dirección</string>
+
     <string name="ImportanteTXT">Lee con atención</string>
     <string name="MensajeTXT_Aut">Para realizar la eliminacion de su cuenta, tendrá que cerrar sesión, luego logearse, y en un plazo de 5 minutos podra eliminar su cuenta de nuestra aplicación, una vez pasado ese tiempo , tendrá que realizar nuevamente los pasos mencionados.</string>
     <string name="btn_Entendido_Aut">Entendido</string>
@@ -135,4 +144,31 @@
     <string name="Todas_Tareas">Todas las tareas</string>
     <string name="Tareas_Finalizadas">Tareas finalizadas</string>
     <string name="Tareas_No_Finalizadas">No finalizadas</string>
+
+    <string name="MisContactos">Mis contactos</string>
+    <string name="AgregarContacto">Agregar contacto</string>
+    <string name="nombreContacto">Nombres</string>
+    <string name="apellidoContacto">Apellidos</string>
+    <string name="telefonoContacto">Telefono</string>
+    <string name="correoContacto">Correo</string>
+    <string name="edadContacto">Edad</string>
+    <string name="guardarContacto">Guardar contacto</string>
+    <string name="direccionContacto">Dirección</string>
+
+    <string name="idContactosDetaDetalles">id:</string>
+    <string name="UidUsuarioDetalle">Id Usuario:</string>
+    <string name="uidContactosDetaDetalles">Uid usuario:</string>
+    <string name="nombreContactoDetalles">Nombres:</string>
+    <string name="apellidoContactoDetalles">Apellidos:</string>
+    <string name="telefonoContactoDetalles">Telefono:</string>
+    <string name="correoContactoDetalles">Correo:</string>
+    <string name="edadContactoDetalles">Edad:</string>
+    <string name="direccionContactoDetalles">Dirección:</string>
+    <string name="detalleContacto">Detalles del contacto</string>
+    <string name="formatoTelefono">0000-0000</string>
+    <string name="llamarContacto">Llamar</string>
+    <string name="enviarMensajeContacto">Mensaje</string>
+    <string name="actualizarContacto">Actualizar contacto</string>
+
+    <string name="Advertencia">Por favor complete al menos el campo Nombre del contacto</string>
 </resources>

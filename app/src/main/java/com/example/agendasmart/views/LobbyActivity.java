@@ -114,7 +114,7 @@ public class LobbyActivity extends AppCompatActivity {
 
         btn_mis_tareas.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, MisTareasActivity.class)));
         btn_tareas_importantes.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, TareasImportantesActivity.class)));
-        btn_contactos.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, TareasImportantesActivity.class)));
+        btn_contactos.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, MisContactosActivity.class)));
     }
 
     private void SalirApp() {

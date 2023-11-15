@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -102,29 +95,43 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:orientation="vertical"
             android:background="@drawable/stroke_btm"
-            android:padding="20dp">
+           android:paddingHorizontal="20dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="id_tarea"
+                    android:text="id_tarea:"
                     android:fontFamily="@font/museomoderno_semibold"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Id_tarea_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="id_tarea"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tituloDetalle"
@@ -133,7 +140,25 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Titulo_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/SettituloDetalle"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Uid_Usuario"
@@ -142,7 +167,24 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Uid_usuario_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="uid"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Correo"
@@ -151,7 +193,24 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Correo_usuario_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/descripcionDetalle"
@@ -160,7 +219,24 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Descripcion_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/SetdescripcionDetalle"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fechaDetalle"
@@ -169,7 +245,24 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Fecha_Registro_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/SetfechaDetalle"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fechaLimiteDetalle"
@@ -178,7 +271,24 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:layout_marginTop="30dp"
+                    android:id="@+id/Fecha_Nota_Detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/SetfechaLimiteDetalle"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/estadoDetalle"
@@ -186,102 +296,25 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_marginBottom="30dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/Id_tarea_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="id_tarea"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/Titulo_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/SettituloDetalle"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/Uid_usuario_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="uid"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/Correo_usuario_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Correo"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/Descripcion_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/SetdescripcionDetalle"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/Fecha_Registro_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/SetfechaDetalle"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/Fecha_Nota_Detalle"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/SetfechaLimiteDetalle"
-                    android:fontFamily="@font/museomoderno_semibold"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/Estado_Detalle"
-                    android:layout_marginTop="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/SetestadoDetalle"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/museomoderno_semibold"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_marginBottom="30dp"/>
+
             </LinearLayout>
         </LinearLayout>
 
         <Button
             android:id="@+id/Boton_Importante"
             android:layout_width="239dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:background="@drawable/btn_inicio"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
@@ -294,4 +327,3 @@
     </LinearLayout>
 
 </RelativeLayout>
-    </ScrollView>
