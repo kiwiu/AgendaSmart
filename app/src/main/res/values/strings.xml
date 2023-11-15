@@ -130,4 +130,9 @@
     <string name="EliminarTarea">Eliminar</string>
     <string name="EliminarTareaCancelar">Cancelar</string>
 
+    <!--Eliminar nota importante-->
+    <string name="FiltroTXT">Tareas</string>
+    <string name="Todas_Tareas">Todas las tareas</string>
+    <string name="Tareas_Finalizadas">Tareas finalizadas</string>
+    <string name="Tareas_No_Finalizadas">No finalizadas</string>
 </resources>

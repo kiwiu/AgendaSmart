@@ -39,7 +39,7 @@ import es.dmoral.toasty.Toasty;
 
 public class MisTareasActivity extends AppCompatActivity {
 
-    ImageButton btnBack, btnEliminar;
+    ImageButton btnBack, Vaciar_Todas_Las_Tareas, Filtrar_Tarea;
     RecyclerView recyclerViewTareas;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference Base_De_Datos;
@@ -54,7 +54,7 @@ public class MisTareasActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
 
-    Dialog dialog;
+    Dialog dialog, dialog_filtrar;
 
 
     @Override
@@ -82,7 +82,11 @@ public class MisTareasActivity extends AppCompatActivity {
         dialog = new Dialog(MisTareasActivity.this);
         ListarTareasUsuarios();
 
-        btnEliminar = (ImageButton) findViewById(R.id.btnEliminar);
+        Vaciar_Todas_Las_Tareas = (ImageButton) findViewById(R.id.Vaciar_Todas_Las_Tareas);
+        Filtrar_Tarea = (ImageButton) findViewById(R.id.Filtrar_Tarea);
+
+        dialog_filtrar = new Dialog(MisTareasActivity.this);
+
         btnBack = (ImageButton) findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +96,25 @@ public class MisTareasActivity extends AppCompatActivity {
 
             }
         });
-    }
 
+        Vaciar_Todas_Las_Tareas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                VaciarRegistroDeTareas();
+
+            }
+        });
+
+        Filtrar_Tarea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FiltrarTareas();
+
+            }
+        });
+    }
 
     private void ListarTareasUsuarios(){
 
@@ -214,7 +235,6 @@ public class MisTareasActivity extends AppCompatActivity {
         recyclerViewTareas.setAdapter(firebaseRecyclerAdapter);
     }
 
-
     private void EliminarNota(String id_tarea) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MisTareasActivity.this);
@@ -264,6 +284,96 @@ public class MisTareasActivity extends AppCompatActivity {
             }
         });
 
+        builder.create().show();
+    }
+
+    private void FiltrarTareas() {
+        Button Todas_Tareas, Tareas_Finalizadas, Tareas_No_Finalizadas;
+
+        dialog_filtrar.setContentView(R.layout.cuadro_dialogo_filtrar_tareas);
+
+        Todas_Tareas = dialog_filtrar.findViewById(R.id.Todas_Tareas);
+        Tareas_Finalizadas = dialog_filtrar.findViewById(R.id.Tareas_Finalizadas);
+        Tareas_No_Finalizadas = dialog_filtrar.findViewById(R.id.Tareas_No_Finalizadas);
+
+        Todas_Tareas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toasty.info(MisTareasActivity.this, "Todas las tareas", Toasty.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Tareas_Finalizadas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toasty.info(MisTareasActivity.this, "Tareas finalizadas", Toasty.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Tareas_No_Finalizadas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toasty.info(MisTareasActivity.this, "Tareas no finalizadas", Toasty.LENGTH_SHORT).show();
+
+            }
+        });
+
+        dialog_filtrar.show();
+    }
+
+    private void VaciarRegistroDeTareas() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MisTareasActivity.this);
+        builder.setTitle("Vaciar todos los registros");
+        builder.setMessage("¿Estas seguro de eliminar todas las tareas, las tareas marcadas como importantes tambien se eliminaran?");
+
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Eliminar todas las tareas
+                Query query = Base_De_Datos.orderByChild("uid_usuario").equalTo(user.getUid());
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds : snapshot.getChildren()) {
+                            ds.getRef().removeValue();
+
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Usuarios");
+                            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes")
+                                    .removeValue()
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            //Toasty.info(MisTareasActivity.this, "Las tareas importante tambien se han eliminado", Toasty.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(MisTareasActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                        }
+                        Toasty.error(MisTareasActivity.this, "Todas las tareas se han eliminado correctamente", Toasty.LENGTH_SHORT).show();
+                        Toasty.info(MisTareasActivity.this, "Las tareas importante tambien se han eliminado", Toasty.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toasty.info(MisTareasActivity.this, "Cancelado", Toasty.LENGTH_SHORT).show();
+            }
+        });
         builder.create().show();
     }
 

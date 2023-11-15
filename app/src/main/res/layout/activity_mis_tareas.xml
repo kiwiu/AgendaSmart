@@ -68,13 +68,12 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/btnEliminar"
+                    android:id="@+id/Vaciar_Todas_Las_Tareas"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/Title"
                     android:scaleType="centerInside"
-                    android:visibility="gone"
                     android:src="@drawable/eliminartodo" />
 
             </LinearLayout>
@@ -87,13 +86,12 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/btnActualizar"
+                    android:id="@+id/Filtrar_Tarea"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/Title"
                     android:scaleType="centerInside"
-                    android:visibility="gone"
                     android:src="@drawable/filtrar" />
 
             </LinearLayout>
