@@ -125,4 +125,9 @@
         <item>"Finalizada"</item>
     </string-array>
 
+    <!--Eliminar nota importante-->
+    <string name="EliminarTareaImportanteTXT">¿Desea eliminar ésta nota importante de la lista?</string>
+    <string name="EliminarTarea">Eliminar</string>
+    <string name="EliminarTareaCancelar">Cancelar</string>
+
 </resources>

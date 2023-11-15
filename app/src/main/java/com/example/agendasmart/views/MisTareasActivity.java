@@ -22,6 +22,8 @@ import com.example.agendasmart.Objetos.Tarea;
 import com.example.agendasmart.R;
 import com.example.agendasmart.ViewHolder.ViewHolder_Tarea;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -50,6 +52,8 @@ public class MisTareasActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
 
+    FirebaseAuth firebaseAuth;
+
     Dialog dialog;
 
 
@@ -63,6 +67,8 @@ public class MisTareasActivity extends AppCompatActivity {
 
         auth  = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         if (user != null) {
             // Imprimir el UID del usuario en el Logcat
@@ -213,12 +219,13 @@ public class MisTareasActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MisTareasActivity.this);
         builder.setTitle("Eliminar Tarea");
-        builder.setMessage("¿Desea Eliminar la Tarea?");
+        builder.setMessage("¿Desea Eliminar la Tarea, si la tarea es importante tambien se eliminara?");
         builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //ELIMINAR NOTA EN BD
                 Query query = Base_De_Datos.orderByChild("id_tarea").equalTo(id_tarea);
+
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -233,6 +240,21 @@ public class MisTareasActivity extends AppCompatActivity {
                         Toasty.error(MisTareasActivity.this, error.getMessage(), Toasty.LENGTH_SHORT).show();
                     }
                 });
+
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Usuarios");
+                reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(id_tarea)
+                        .removeValue()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                //Toasty.info(MisTareasActivity.this, "La tarea ya no es importante", Toasty.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MisTareasActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
