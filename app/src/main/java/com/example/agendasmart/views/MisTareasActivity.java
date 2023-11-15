@@ -119,6 +119,7 @@ public class MisTareasActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         //Obtener los datos de la nota seleccionada
                         String id_tarea = getItem(position).getId_tarea();
+                        String uid_usuario = getItem(position).getUid_usuario();
                         String correo_usuario = getItem(position).getCorreo_usuario();
                         String fecha_registro = getItem(position).getFecha_horaactual();
                         String titulo = getItem(position).getTitulo();
@@ -126,8 +127,10 @@ public class MisTareasActivity extends AppCompatActivity {
                         String fecha_nota = getItem(position).getFecha_nota();
                         String estado = getItem(position).getEstado();
 
+                        /*enviar datos a la siguiente actividad*/
                         Intent intent = new Intent(MisTareasActivity.this, DetalleTareaActivity.class);
                         intent.putExtra("id_tarea", id_tarea);
+                        intent.putExtra("uid_usuario", uid_usuario);
                         intent.putExtra("correo_usuario", correo_usuario);
                         intent.putExtra("fecha_registro", fecha_registro);
                         intent.putExtra("titulo", titulo);
@@ -142,6 +145,7 @@ public class MisTareasActivity extends AppCompatActivity {
 
                         //Obtener los datos de la nota seleccionada
                         String id_tarea = getItem(position).getId_tarea();
+                        String uid_usuario = getItem(position).getUid_usuario();
                         String correo_usuario = getItem(position).getCorreo_usuario();
                         String fecha_registro = getItem(position).getFecha_horaactual();
                         String titulo = getItem(position).getTitulo();
@@ -176,7 +180,7 @@ public class MisTareasActivity extends AppCompatActivity {
                                 //Toast.makeText(MisTareasActivity.this, "Actualizar Tarea", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MisTareasActivity.this, ActualizarTareaActivity.class);
                                 intent.putExtra("id_tarea", id_tarea);
-                                //intent.putExtra("uid_usuario", uid_usuario);
+                                intent.putExtra("uid_usuario", uid_usuario);
                                 intent.putExtra("correo_usuario", correo_usuario);
                                 intent.putExtra("fecha_registro", fecha_registro);
                                 intent.putExtra("titulo", titulo);

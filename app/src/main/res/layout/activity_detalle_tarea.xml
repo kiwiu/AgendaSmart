@@ -118,7 +118,34 @@
                     android:layout_marginTop="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="id_tarea"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/tituloDetalle"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uid_Usuario"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo"
                     android:fontFamily="@font/museomoderno_semibold"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
@@ -172,8 +199,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:hint="@string/SettituloDetalle"
+                    android:hint="id_tarea"
                     android:fontFamily="@font/museomoderno_semibold"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
@@ -187,6 +213,27 @@
                     android:fontFamily="@font/museomoderno_semibold"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/Uid_usuario_Detalle"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="uid"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/Correo_usuario_Detalle"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
 
                 <TextView
                     android:id="@+id/Descripcion_Detalle"

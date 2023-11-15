@@ -36,7 +36,7 @@ public class DetalleTareaActivity extends AppCompatActivity {
     TextView Id_tarea_Detalle, Uid_usuario_Detalle, Correo_usuario_Detalle, Titulo_Detalle, Descripcion_Detalle,
             Fecha_Registro_Detalle, Fecha_Nota_Detalle, Estado_Detalle;
 
-    String id_tarea_R, correo_usuario_R, fecha_registro_R, titulo_R, descripcion_R, fecha_R, estado_R;
+    String id_tarea_R, uid_usuario_R, correo_usuario_R, fecha_registro_R, titulo_R, descripcion_R, fecha_R, estado_R;
 
     boolean ComprobarNotaImportante = false;
     ImageButton btnBack;
@@ -80,6 +80,8 @@ public class DetalleTareaActivity extends AppCompatActivity {
     }
     private void InicializarVistas(){
         Id_tarea_Detalle = findViewById(R.id.Id_tarea_Detalle);
+        Uid_usuario_Detalle = findViewById(R.id.Uid_usuario_Detalle);
+        Correo_usuario_Detalle = findViewById(R.id.Correo_usuario_Detalle);
         Titulo_Detalle = findViewById(R.id.Titulo_Detalle);
         Descripcion_Detalle = findViewById(R.id.Descripcion_Detalle);
         Fecha_Registro_Detalle = findViewById(R.id.Fecha_Registro_Detalle);
@@ -95,6 +97,7 @@ public class DetalleTareaActivity extends AppCompatActivity {
         Bundle intent = getIntent().getExtras();
 
         id_tarea_R = intent.getString("id_tarea");
+        uid_usuario_R = intent.getString("uid_usuario");
         correo_usuario_R = intent.getString("correo_usuario");
         fecha_registro_R = intent.getString("fecha_registro");
         titulo_R = intent.getString("titulo");
@@ -106,6 +109,8 @@ public class DetalleTareaActivity extends AppCompatActivity {
 
     private void SetearDatosRecuperados(){
         Id_tarea_Detalle.setText(id_tarea_R);
+        Uid_usuario_Detalle.setText(uid_usuario_R);
+        Correo_usuario_Detalle.setText(correo_usuario_R);
         Fecha_Registro_Detalle.setText(fecha_registro_R);
         Titulo_Detalle.setText(titulo_R);
         Descripcion_Detalle.setText(descripcion_R);
@@ -115,31 +120,35 @@ public class DetalleTareaActivity extends AppCompatActivity {
 
    private void Agregar_Notas_Importantes(){
         if (user == null){
-            Toast.makeText(DetalleTareaActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            Toasty.error(DetalleTareaActivity.this, "Error", Toasty.LENGTH_SHORT).show();
         }else {
-
+            /*obtener datos de la nota de la actividad anterior*/
             Bundle intent = getIntent().getExtras();
 
             id_tarea_R = intent.getString("id_tarea");
+            uid_usuario_R = intent.getString("uid_usuario");
+            correo_usuario_R = intent.getString("correo_usuario");
             fecha_registro_R = intent.getString("fecha_registro");
             titulo_R = intent.getString("titulo");
             descripcion_R = intent.getString("descripcion");
             fecha_R = intent.getString("fecha_nota");
             estado_R = intent.getString("estado");
 
-            String identificador_nota_importante = titulo_R;
+
 
             HashMap<String , String> Nota_Importante = new HashMap<>();
             Nota_Importante.put("id_tarea", id_tarea_R);
+            Nota_Importante.put("uid_usuario", uid_usuario_R);
+            Nota_Importante.put("correo_usuario", correo_usuario_R);
             Nota_Importante.put("fecha_hora_actual", fecha_registro_R);
             Nota_Importante.put("titulo", titulo_R);
             Nota_Importante.put("descripcion", descripcion_R);
             Nota_Importante.put("fecha_nota", fecha_R);
             Nota_Importante.put("estado", estado_R);
-            Nota_Importante.put("id_nota_importante", identificador_nota_importante);
+
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Usuarios");
-            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(identificador_nota_importante)
+            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(id_tarea_R)
                     .setValue(Nota_Importante)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -157,15 +166,13 @@ public class DetalleTareaActivity extends AppCompatActivity {
 
     private void Eliminar_Nota_Importante(){
         if (user == null){
-            Toast.makeText(DetalleTareaActivity.this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+            Toasty.error(DetalleTareaActivity.this, "Ha ocurrido un error", Toasty.LENGTH_SHORT).show();
         }else {
             Bundle intent = getIntent().getExtras();
-            titulo_R = intent.getString("titulo");
-
-            String identificador_nota_importante = titulo_R;
+            id_tarea_R = intent.getString("id_tarea");
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Usuarios");
-            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(identificador_nota_importante)
+            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(id_tarea_R)
                     .removeValue()
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -178,21 +185,18 @@ public class DetalleTareaActivity extends AppCompatActivity {
                             Toast.makeText(DetalleTareaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
         }
     }
 
     private void VerificarNotaImportante(){
         if (user == null){
-            Toast.makeText(DetalleTareaActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            Toasty.error(DetalleTareaActivity.this, "Error", Toasty.LENGTH_SHORT).show();
         }else {
             Bundle intent = getIntent().getExtras();
-            titulo_R = intent.getString("titulo");
-
-            String identificador_nota_importante = titulo_R;
+            id_tarea_R = intent.getString("id_tarea");
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Usuarios");
-            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(identificador_nota_importante)
+            reference.child(firebaseAuth.getUid()).child("Mis tareas importantes").child(id_tarea_R)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -216,5 +220,4 @@ public class DetalleTareaActivity extends AppCompatActivity {
 
         }
     }
-
 }

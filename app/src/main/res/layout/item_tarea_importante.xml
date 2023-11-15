@@ -39,6 +39,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/id_tarea_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/itenid"
@@ -47,6 +48,7 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/uid_usuario_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/uidUsuario"
@@ -55,6 +57,7 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/correo_usuario_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/CorreoUsuario"
@@ -63,6 +66,7 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/titulo_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/Tituloiten"
@@ -70,6 +74,7 @@
                 android:textSize="20sp"/>
 
             <TextView
+                android:id="@+id/descripcion_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/Descripcioniten"
@@ -77,27 +82,55 @@
                 android:textSize="16sp"/>
 
             <TextView
+                android:id="@+id/fecha_hora_registro_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/fechaiten"
+                android:visibility="gone"
                 android:fontFamily="@font/museomoderno_semibold"
                 android:textSize="14sp"/>
 
             <TextView
+                android:id="@+id/fecha_item_I"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/formatoiten"
                 android:fontFamily="@font/museomoderno_semibold"
-                android:textSize="16sp"
-                android:visibility="gone"/>
+                android:textSize="16sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nofinalizadaiten"
-                android:fontFamily="@font/museomoderno_semibold"
-                android:textSize="16sp"
-                android:visibility="gone"/>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Tarea_Finalizada_Item_I"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:background="#16A085"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Tarea_No_Finalizada_Item_I"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginStart="5dp"
+                    android:background="#E74C3C"/>
+
+                <TextView
+                    android:id="@+id/estado_item_I"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:hint="@string/nofinalizadaiten"
+                    android:fontFamily="@font/museomoderno_semibold"
+                    android:textSize="20sp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>

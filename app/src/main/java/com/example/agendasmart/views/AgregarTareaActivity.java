@@ -147,12 +147,13 @@ public class AgregarTareaActivity extends AppCompatActivity {
         String Descripcion = descripcion.getText().toString();
         String Fecha = fecha.getText().toString();
         String Estado = estado.getText().toString();
+        String id_nota = BD_Firebase.push().getKey();
 
         /*validar datos*/
         if (!Uid_usuario.equals("") && !Correo_usuario.equals("") && !FechaHoraActual.equals("") &&
                 !Titulo.equals("") && !Descripcion.equals("") && !Fecha.equals("") && !Estado.equals("")) {
 
-            Tarea tarea = new Tarea(Correo_usuario + "/" + FechaHoraActual,
+            Tarea tarea = new Tarea(id_nota,
                     Uid_usuario,
                     Correo_usuario,
                     FechaHoraActual,
@@ -161,10 +162,10 @@ public class AgregarTareaActivity extends AppCompatActivity {
                     Fecha,
                     Estado);
 
-            String Tarea_usuario = BD_Firebase.push().getKey();
+
             String Nombre_BD = "Tareas_publicadas";
 
-            BD_Firebase.child(Nombre_BD).child(Tarea_usuario).setValue(tarea);
+            BD_Firebase.child(Nombre_BD).child(id_nota).setValue(tarea);
 
             Toasty.success(this, "Tarea agregada con éxito", Toast.LENGTH_SHORT).show();
 
