@@ -22,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.agendasmart.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +50,9 @@ public class ActualizarTareaActivity extends AppCompatActivity implements Adapte
     Spinner Spinner_estado;
 
     int dia, mes , anio;
+
+    FirebaseAuth firebaseAuth;/*--------------*/
+    FirebaseUser user;/*--------------*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +113,9 @@ public class ActualizarTareaActivity extends AppCompatActivity implements Adapte
         Estado_nuevo = findViewById(R.id.Estado_nuevo);
         btnBack = (ImageButton)findViewById(R.id.btnBack);
         btn_actualizar_tarea = (ImageButton) findViewById(R.id.btn_actualizar_tarea);
+
+        firebaseAuth = FirebaseAuth.getInstance();/*--------------*/
+        user = firebaseAuth.getCurrentUser();/*--------------*/
     }
 
     private void RecuperarDatos(){
@@ -207,10 +215,10 @@ public class ActualizarTareaActivity extends AppCompatActivity implements Adapte
         String estadoActualizar = Estado_nuevo.getText().toString();
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Tareas_publicadas");
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Usuarios");/*--------------*/
 
         //Consulta
-        Query query = databaseReference.orderByChild("id_tarea").equalTo(id_tarea_R);
+        Query query = databaseReference.child(user.getUid()).child("Tareas_publicadas").orderByChild("id_tarea").equalTo(id_tarea_R);/*--------------*/
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -154,6 +154,8 @@ public class TareasImportantesActivity extends AppCompatActivity {
 
         linearLayoutManager= new LinearLayoutManager(TareasImportantesActivity.this, LinearLayoutManager.VERTICAL, false);
 
+        linearLayoutManager.setReverseLayout(true);/*de manera inversa el orden*/
+        linearLayoutManager.setStackFromEnd(true);/*desde el final*/
 
         RecyclerViewTareasImportantes.setLayoutManager(linearLayoutManager);
         RecyclerViewTareasImportantes.setAdapter(firebaseRecyclerAdapter);

@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.agendasmart.Objetos.Tarea;
 import com.example.agendasmart.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,6 +36,9 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
     int dia, mes, anio;
 
+    FirebaseAuth firebaseAuth;/*--------------*/
+
+    FirebaseUser user;/*--------------*/
     DatabaseReference BD_Firebase;
 
     @Override
@@ -122,7 +127,10 @@ public class AgregarTareaActivity extends AppCompatActivity {
         btn_calendario = (Button)findViewById(R.id.btn_calendario);
         btn_agregar_tarea = (ImageButton) findViewById(R.id.btn_agregar_tarea);
 
-        BD_Firebase = FirebaseDatabase.getInstance().getReference();
+        BD_Firebase = FirebaseDatabase.getInstance().getReference("Usuarios");/*--------------*/
+
+        firebaseAuth = FirebaseAuth.getInstance();/*--------------*/
+        user = firebaseAuth.getCurrentUser();/*--------------*/
     }
 
     private void  ObtenerDatos(){
@@ -165,7 +173,8 @@ public class AgregarTareaActivity extends AppCompatActivity {
 
             String Nombre_BD = "Tareas_publicadas";
 
-            BD_Firebase.child(Nombre_BD).child(id_nota).setValue(tarea);
+            assert id_nota != null;
+            BD_Firebase.child(user.getUid()).child(Nombre_BD).child(id_nota).setValue(tarea);/*--------------*/
 
             Toasty.success(this, "Tarea agregada con éxito", Toast.LENGTH_SHORT).show();
 

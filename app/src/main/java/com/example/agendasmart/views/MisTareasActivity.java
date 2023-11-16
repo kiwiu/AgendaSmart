@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,7 +43,7 @@ public class MisTareasActivity extends AppCompatActivity {
     ImageButton btnBack, Vaciar_Todas_Las_Tareas, Filtrar_Tarea;
     RecyclerView recyclerViewTareas;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference Base_De_Datos;
+    DatabaseReference BD_Usuarios;
 
     LinearLayoutManager linearLayoutManager;
 
@@ -55,6 +56,8 @@ public class MisTareasActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
 
     Dialog dialog, dialog_filtrar;
+
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -78,9 +81,10 @@ public class MisTareasActivity extends AppCompatActivity {
         }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        Base_De_Datos = firebaseDatabase.getReference("Tareas_publicadas");
+        BD_Usuarios = firebaseDatabase.getReference("Usuarios");/*--------------*/
         dialog = new Dialog(MisTareasActivity.this);
-        ListarTareasUsuarios();
+
+        EstadoFiltro();
 
         Vaciar_Todas_Las_Tareas = (ImageButton) findViewById(R.id.Vaciar_Todas_Las_Tareas);
         Filtrar_Tarea = (ImageButton) findViewById(R.id.Filtrar_Tarea);
@@ -116,9 +120,251 @@ public class MisTareasActivity extends AppCompatActivity {
         });
     }
 
-    private void ListarTareasUsuarios(){
+    private void ListarTodasTareas(){
 
-        Query query = Base_De_Datos.orderByChild("uid_usuario").equalTo(user.getUid());
+        Query query = BD_Usuarios.child(user.getUid()).child("Tareas_publicadas").orderByChild("fecha_nota");/*--------------*/
+        options = new FirebaseRecyclerOptions.Builder<Tarea>().setQuery(query, Tarea.class).build();
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Tarea, ViewHolder_Tarea>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ViewHolder_Tarea viewHolder_tarea, int position, @NonNull Tarea tarea) {
+                viewHolder_tarea.SetearDatos(
+                        getApplicationContext(),
+                        tarea.getId_tarea(),
+                        tarea.getUid_usuario(),
+                        tarea.getCorreo_usuario(),
+                        tarea.getFecha_horaactual(),
+                        tarea.getTitulo(),
+                        tarea.getDescripcion(),
+                        tarea.getFecha_nota(),
+                        tarea.getEstado()
+
+                );
+            }
+
+            @Override
+            public ViewHolder_Tarea onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tarea, parent, false);
+                ViewHolder_Tarea viewHolder_tarea = new ViewHolder_Tarea(view);
+                viewHolder_tarea.setOnclickListener(new ViewHolder_Tarea.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //Obtener los datos de la nota seleccionada
+                        String id_tarea = getItem(position).getId_tarea();
+                        String uid_usuario = getItem(position).getUid_usuario();
+                        String correo_usuario = getItem(position).getCorreo_usuario();
+                        String fecha_registro = getItem(position).getFecha_horaactual();
+                        String titulo = getItem(position).getTitulo();
+                        String descripcion = getItem(position).getDescripcion();
+                        String fecha_nota = getItem(position).getFecha_nota();
+                        String estado = getItem(position).getEstado();
+
+                        /*enviar datos a la siguiente actividad*/
+                        Intent intent = new Intent(MisTareasActivity.this, DetalleTareaActivity.class);
+                        intent.putExtra("id_tarea", id_tarea);
+                        intent.putExtra("uid_usuario", uid_usuario);
+                        intent.putExtra("correo_usuario", correo_usuario);
+                        intent.putExtra("fecha_registro", fecha_registro);
+                        intent.putExtra("titulo", titulo);
+                        intent.putExtra("descripcion", descripcion);
+                        intent.putExtra("fecha_nota", fecha_nota);
+                        intent.putExtra("estado", estado);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+
+                        //Obtener los datos de la nota seleccionada
+                        String id_tarea = getItem(position).getId_tarea();
+                        String uid_usuario = getItem(position).getUid_usuario();
+                        String correo_usuario = getItem(position).getCorreo_usuario();
+                        String fecha_registro = getItem(position).getFecha_horaactual();
+                        String titulo = getItem(position).getTitulo();
+                        String descripcion = getItem(position).getDescripcion();
+                        String fecha_nota = getItem(position).getFecha_nota();
+                        String estado = getItem(position).getEstado();
+
+
+                        Button Eliminar, Actualizar;
+                        ImageButton btnEliminar;
+
+
+                        //Realizar la conexión con el diseño
+                        dialog.setContentView(R.layout.cuadro_dialogo_opciones);
+
+                        //Inicializar las vistas
+                        Eliminar = dialog.findViewById(R.id.Eliminar);
+                        Actualizar = dialog.findViewById(R.id.Actualizar);
+
+
+                        Eliminar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                EliminarNota(id_tarea);
+                                dialog.dismiss();
+                            }
+                        });
+
+                        Actualizar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //Toast.makeText(MisTareasActivity.this, "Actualizar Tarea", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MisTareasActivity.this, ActualizarTareaActivity.class);
+                                intent.putExtra("id_tarea", id_tarea);
+                                intent.putExtra("uid_usuario", uid_usuario);
+                                intent.putExtra("correo_usuario", correo_usuario);
+                                intent.putExtra("fecha_registro", fecha_registro);
+                                intent.putExtra("titulo", titulo);
+                                intent.putExtra("descripcion", descripcion);
+                                intent.putExtra("fecha_nota", fecha_nota);
+                                intent.putExtra("estado", estado);
+                                startActivity(intent);
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
+                });
+                return viewHolder_tarea;
+            }
+        };
+
+
+
+        linearLayoutManager= new LinearLayoutManager(MisTareasActivity.this, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager.setReverseLayout(true);/*Listar notas desde la ultima*/
+        linearLayoutManager.setStackFromEnd(true);/*empiece desde la parte superior*/
+
+        recyclerViewTareas.setLayoutManager(linearLayoutManager);
+        recyclerViewTareas.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    private void ListarTareasFinalizadas(){
+
+        String estado_Tarea = "Finalizada";
+
+        Query query = BD_Usuarios.child(user.getUid()).child("Tareas_publicadas").orderByChild("estado").equalTo(estado_Tarea);
+        options = new FirebaseRecyclerOptions.Builder<Tarea>().setQuery(query, Tarea.class).build();
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Tarea, ViewHolder_Tarea>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ViewHolder_Tarea viewHolder_tarea, int position, @NonNull Tarea tarea) {
+                viewHolder_tarea.SetearDatos(
+                        getApplicationContext(),
+                        tarea.getId_tarea(),
+                        tarea.getUid_usuario(),
+                        tarea.getCorreo_usuario(),
+                        tarea.getFecha_horaactual(),
+                        tarea.getTitulo(),
+                        tarea.getDescripcion(),
+                        tarea.getFecha_nota(),
+                        tarea.getEstado()
+
+                );
+            }
+
+            @Override
+            public ViewHolder_Tarea onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tarea, parent, false);
+                ViewHolder_Tarea viewHolder_tarea = new ViewHolder_Tarea(view);
+                viewHolder_tarea.setOnclickListener(new ViewHolder_Tarea.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //Obtener los datos de la nota seleccionada
+                        String id_tarea = getItem(position).getId_tarea();
+                        String uid_usuario = getItem(position).getUid_usuario();
+                        String correo_usuario = getItem(position).getCorreo_usuario();
+                        String fecha_registro = getItem(position).getFecha_horaactual();
+                        String titulo = getItem(position).getTitulo();
+                        String descripcion = getItem(position).getDescripcion();
+                        String fecha_nota = getItem(position).getFecha_nota();
+                        String estado = getItem(position).getEstado();
+
+                        /*enviar datos a la siguiente actividad*/
+                        Intent intent = new Intent(MisTareasActivity.this, DetalleTareaActivity.class);
+                        intent.putExtra("id_tarea", id_tarea);
+                        intent.putExtra("uid_usuario", uid_usuario);
+                        intent.putExtra("correo_usuario", correo_usuario);
+                        intent.putExtra("fecha_registro", fecha_registro);
+                        intent.putExtra("titulo", titulo);
+                        intent.putExtra("descripcion", descripcion);
+                        intent.putExtra("fecha_nota", fecha_nota);
+                        intent.putExtra("estado", estado);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+
+                        //Obtener los datos de la nota seleccionada
+                        String id_tarea = getItem(position).getId_tarea();
+                        String uid_usuario = getItem(position).getUid_usuario();
+                        String correo_usuario = getItem(position).getCorreo_usuario();
+                        String fecha_registro = getItem(position).getFecha_horaactual();
+                        String titulo = getItem(position).getTitulo();
+                        String descripcion = getItem(position).getDescripcion();
+                        String fecha_nota = getItem(position).getFecha_nota();
+                        String estado = getItem(position).getEstado();
+
+
+                        Button Eliminar, Actualizar;
+                        ImageButton btnEliminar;
+
+
+                        //Realizar la conexión con el diseño
+                        dialog.setContentView(R.layout.cuadro_dialogo_opciones);
+
+                        //Inicializar las vistas
+                        Eliminar = dialog.findViewById(R.id.Eliminar);
+                        Actualizar = dialog.findViewById(R.id.Actualizar);
+
+
+                        Eliminar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                EliminarNota(id_tarea);
+                                dialog.dismiss();
+                            }
+                        });
+
+                        Actualizar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //Toast.makeText(MisTareasActivity.this, "Actualizar Tarea", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MisTareasActivity.this, ActualizarTareaActivity.class);
+                                intent.putExtra("id_tarea", id_tarea);
+                                intent.putExtra("uid_usuario", uid_usuario);
+                                intent.putExtra("correo_usuario", correo_usuario);
+                                intent.putExtra("fecha_registro", fecha_registro);
+                                intent.putExtra("titulo", titulo);
+                                intent.putExtra("descripcion", descripcion);
+                                intent.putExtra("fecha_nota", fecha_nota);
+                                intent.putExtra("estado", estado);
+                                startActivity(intent);
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                    }
+                });
+                return viewHolder_tarea;
+            }
+        };
+
+
+
+        linearLayoutManager= new LinearLayoutManager(MisTareasActivity.this, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager.setReverseLayout(true);/*Listar notas desde la ultima*/
+        linearLayoutManager.setStackFromEnd(true);/*empiece desde la parte superior*/
+
+        recyclerViewTareas.setLayoutManager(linearLayoutManager);
+        recyclerViewTareas.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    private void ListarTareasNoFinalizadas(){
+
+        String estado_tarea ="No finalizada";
+        Query query = BD_Usuarios.child(user.getUid()).child("Tareas_publicadas").orderByChild("estado").equalTo(estado_tarea);
+
         options = new FirebaseRecyclerOptions.Builder<Tarea>().setQuery(query, Tarea.class).build();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Tarea, ViewHolder_Tarea>(options) {
             @Override
@@ -244,7 +490,7 @@ public class MisTareasActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //ELIMINAR NOTA EN BD
-                Query query = Base_De_Datos.orderByChild("id_tarea").equalTo(id_tarea);
+                Query query = BD_Usuarios.child(user.getUid()).child("Tareas_publicadas").orderByChild("id_tarea").equalTo(id_tarea);/*--------------*/
 
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -299,24 +545,36 @@ public class MisTareasActivity extends AppCompatActivity {
         Todas_Tareas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("Listar", "Todas");
+                editor.apply();
+                recreate();
                 Toasty.info(MisTareasActivity.this, "Todas las tareas", Toasty.LENGTH_SHORT).show();
-
+                dialog_filtrar.dismiss();
             }
         });
 
         Tareas_Finalizadas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("Listar", "Finalizada");
+                editor.apply();
+                recreate();
                 Toasty.info(MisTareasActivity.this, "Tareas finalizadas", Toasty.LENGTH_SHORT).show();
-
+                dialog_filtrar.dismiss();
             }
         });
 
         Tareas_No_Finalizadas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("Listar", "No finalizada");
+                editor.apply();
+                recreate();
                 Toasty.info(MisTareasActivity.this, "Tareas no finalizadas", Toasty.LENGTH_SHORT).show();
-
+                dialog_filtrar.dismiss();
             }
         });
 
@@ -332,7 +590,7 @@ public class MisTareasActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //Eliminar todas las tareas
-                Query query = Base_De_Datos.orderByChild("uid_usuario").equalTo(user.getUid());
+                Query query = BD_Usuarios.child(user.getUid()).child("Tareas_publicadas");/*--------------*/
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -375,6 +633,22 @@ public class MisTareasActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    private void EstadoFiltro(){
+        sharedPreferences = MisTareasActivity.this.getSharedPreferences("Tareas", MODE_PRIVATE);
+        String estado_filtro = sharedPreferences.getString("Listar", "Todas");
+        switch(estado_filtro){
+            case "Todas":
+                ListarTodasTareas();
+                break;
+            case "Finalizada":
+                ListarTareasFinalizadas();
+                break;
+            case "No finalizada":
+                ListarTareasNoFinalizadas();
+                break;
+        }
     }
 
     @Override
