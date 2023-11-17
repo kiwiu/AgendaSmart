@@ -154,6 +154,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtIdContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -181,6 +182,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtUidUsuarioDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -207,6 +209,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtNombreContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -233,6 +236,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtApellidoContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -259,6 +263,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtCorreoContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -285,6 +290,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtEdadContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -311,6 +317,7 @@
                     android:textSize="15sp"/>
 
                 <TextView
+                    android:id="@+id/txtDireccionContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museomoderno_semibold"
@@ -352,6 +359,7 @@
                     android:src="@drawable/numero_telefono"/>
 
                 <TextView
+                    android:id="@+id/txtTelefonoContactoDetalle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/formatoTelefono"
@@ -367,6 +375,7 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/btnLlamarContacto"
                     android:layout_width="160dp"
                     android:layout_height="56dp"
                     android:text="@string/llamarContacto"
@@ -378,6 +387,7 @@
                     android:background="@drawable/btn_inicio"/>
 
                 <Button
+                    android:id="@+id/btnMensajeContacto"
                     android:layout_width="160dp"
                     android:layout_height="56dp"
                     android:text="@string/enviarMensajeContacto"

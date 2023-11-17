@@ -98,6 +98,7 @@
     <string name="TelefonoContacto">Telefono</string>
     <string name="CorreoContacto">Correo</string>
     <string name="EdadContacto">Edad</string>
+    <string name="DireccionContacto">Dirección</string>
 
     <string name="idContactoActualizar">Id Contacto</string>
     <string name="UidUsuarioActualizar">Id Usuario</string>

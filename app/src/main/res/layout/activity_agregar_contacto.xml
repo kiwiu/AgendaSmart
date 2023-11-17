@@ -83,43 +83,49 @@
         android:gravity="center">
 
         <TextView
-            android:layout_marginTop="10dp"
+            android:id="@+id/uidUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/museomoderno_semibold"
             android:hint="@string/uidUsuario"
-            android:textColor="@color/black"/>
+            android:visibility="gone"
+            android:textColor="@color/black" />
 
         <ImageView
+            android:id="@+id/imgPerfil"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/contactos_agregar"/>
 
         <EditText
+            android:id="@+id/nombre_Contacto"
             android:layout_width="320dp"
             android:layout_height="58dp"
             android:background="@drawable/stroke_btm"
             android:layout_marginTop="15dp"
             android:hint="@string/nombreContacto"
             android:fontFamily="@font/museomoderno"
-            android:inputType="textPersonName"
+            android:inputType="textCapWords|textPersonName"
             android:padding="15dp"
             android:textSize="14sp"
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/apellido_Contacto"
             android:layout_width="320dp"
             android:layout_height="58dp"
             android:background="@drawable/stroke_btm"
             android:layout_marginTop="15dp"
             android:hint="@string/apellidoContacto"
             android:fontFamily="@font/museomoderno"
-            android:inputType="textPersonName"
+            android:inputType="textCapWords|textPersonName"
             android:padding="15dp"
             android:textSize="14sp"
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/correo_Contacto"
             android:layout_width="320dp"
             android:layout_height="58dp"
             android:background="@drawable/stroke_btm"
@@ -151,6 +157,7 @@
                 android:textCursorDrawable="@drawable/cursor_color"/>
 
             <ImageButton
+                android:id="@+id/btnTelefono"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -162,6 +169,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <EditText
+            android:id="@+id/edad_Contacto"
             android:layout_width="320dp"
             android:layout_height="58dp"
             android:background="@drawable/stroke_btm"
@@ -174,19 +182,20 @@
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <EditText
+            android:id="@+id/direccion_Contacto"
             android:layout_width="320dp"
             android:layout_height="58dp"
             android:background="@drawable/stroke_btm"
             android:layout_marginTop="15dp"
             android:hint="@string/direccionContacto"
             android:fontFamily="@font/museomoderno"
-            android:inputType="text"
+            android:inputType="textCapWords|text"
             android:padding="15dp"
             android:textSize="14sp"
             android:textCursorDrawable="@drawable/cursor_color"/>
 
         <Button
-            android:id="@+id/btnActualizarPerfil"
+            android:id="@+id/btnGuardarContacto"
             android:layout_width="239dp"
             android:layout_height="57dp"
             android:background="@drawable/btn_inicio"

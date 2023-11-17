@@ -114,7 +114,18 @@ public class LobbyActivity extends AppCompatActivity {
 
         btn_mis_tareas.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, MisTareasActivity.class)));
         btn_tareas_importantes.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, TareasImportantesActivity.class)));
-        btn_contactos.setOnClickListener( v -> startActivity(new Intent(LobbyActivity.this, MisContactosActivity.class)));
+        btn_contactos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*esto e para obtener el texto de lo textview*/
+                String uid_usuarioR = tv_ui.getText().toString();
+
+                /*pasar los datos a la actividad de MisContactosActivity*/
+                Intent intent = new Intent(LobbyActivity.this, MisContactosActivity.class);
+                intent.putExtra("uid", uid_usuarioR);
+                startActivity(intent);
+            }
+        });
     }
 
     private void SalirApp() {
