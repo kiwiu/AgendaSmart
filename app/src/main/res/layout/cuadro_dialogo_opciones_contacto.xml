@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+    <TextView
+        android:text="@string/Opcion"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:fontFamily="@font/museomoderno_semibold"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/Title"
+        android:src="@drawable/click"/>
+
+    <Button
+        android:id="@+id/EliminarC"
+        android:text="@string/Eliminar"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_option_2"
+        android:fontFamily="@font/museomoderno"
+        android:layout_width="160dp"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/ActualizarC"
+        android:text="@string/ActualizarT"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_inicio"
+        android:fontFamily="@font/museomoderno"
+        android:layout_width="160dp"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
@@ -25,9 +29,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import es.dmoral.toasty.Toasty;
 
@@ -44,7 +51,9 @@ public class MisContactosActivity extends AppCompatActivity {
 
     LinearLayout linearLayoutBotones, linearLayoutBuscar;
     SearchView searchView;
-    ImageButton btnAgregarContacto, btnBack;
+    ImageButton btnAgregarContacto, btnBack, VaciarContactos;
+
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +63,7 @@ public class MisContactosActivity extends AppCompatActivity {
         linearLayoutBuscar = findViewById(R.id.linearLayoutSearch);
         searchView = findViewById(R.id.searchView);
         btnAgregarContacto = findViewById(R.id.btn_agregar_contacto);
+        VaciarContactos = findViewById(R.id.btn_eliminar_contactos);
         btnBack = findViewById(R.id.btnBack);
 
         recyclerViewContactos = findViewById(R.id.recyclerViewContactos);
@@ -66,6 +76,8 @@ public class MisContactosActivity extends AppCompatActivity {
         user = firebaseAuth.getCurrentUser();
 
         btnBack.setOnClickListener(v -> MisContactosActivity.super.onBackPressed());
+
+        dialog = new Dialog(MisContactosActivity.this);
 
         ListarContacto();
 
@@ -99,6 +111,7 @@ public class MisContactosActivity extends AppCompatActivity {
             }
         });
 
+
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -117,6 +130,14 @@ public class MisContactosActivity extends AppCompatActivity {
                 Intent intent = new Intent(MisContactosActivity.this, AgregarContactoActivity.class);
                 intent.putExtra("uid", uidRecuperado);
                 startActivity(intent);
+            }
+        });
+
+        VaciarContactos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vaciar_Contactos();
+                dialog.dismiss();
             }
         });
 
@@ -169,7 +190,32 @@ public class MisContactosActivity extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        Toasty.info(getApplicationContext(), "Click largo en el item", Toasty.LENGTH_SHORT).show();
+                        String id_c = getItem(position).getId_contacto();
+
+                        //Toasty.info(getApplicationContext(), "Opciones de contacto", Toasty.LENGTH_SHORT).show();
+                        Button EliminarC, ActualizarC;
+
+                        dialog.setContentView(R.layout.cuadro_dialogo_opciones_contacto);
+
+                        EliminarC = dialog.findViewById(R.id.EliminarC);
+                        ActualizarC = dialog.findViewById(R.id.ActualizarC);
+
+                        EliminarC.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                EliminarContacto(id_c);
+                                dialog.dismiss();
+                            }
+                        });
+
+                        ActualizarC.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toasty.warning(getApplicationContext(), "Actualizar contacto", Toasty.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
+
                     }
 });
 
@@ -242,6 +288,79 @@ public class MisContactosActivity extends AppCompatActivity {
         recyclerViewContactos.setAdapter(firebaseRecyclerAdapter);
     }
 
+    private void EliminarContacto(String id_c) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MisContactosActivity.this);
+        builder.setTitle("Eliminar");
+        builder.setMessage("¿Desea eliminar este contacto?");
+
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Query query = BD_Usuarios.child(user.getUid()).child("Contactos").orderByChild("id_contacto").equalTo(id_c);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Toasty.error(getApplicationContext(), "Contacto eliminado", Toasty.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toasty.error(getApplicationContext(), error.getMessage(), Toasty.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toasty.info(getApplicationContext(), "Cancelado", Toasty.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.create().show();
+    }
+
+    private void Vaciar_Contactos(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MisContactosActivity.this);
+        builder.setTitle("Vaciar todos los contactos");
+        builder.setMessage("¿Estas seguro de eliminar todos los contactos?");
+
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Query query = BD_Usuarios.child(user.getUid()).child("Contactos");
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Toasty.error(getApplicationContext(), "Todos los contactos se han eliminado correctamente", Toasty.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Toasty.info(getApplicationContext(), "Cancelado", Toasty.LENGTH_SHORT).show();
+
+            }
+        });
+
+        builder.create().show();
+    }
 
 
     @Override
