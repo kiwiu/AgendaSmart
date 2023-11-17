@@ -1,8 +1,16 @@
 package com.example.agendasmart.views;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -35,6 +43,28 @@ public class DetalleContactoActivity extends AppCompatActivity {
         ObtenerDatosContacto();
         SettearDatosContacto();
         ObtenerImagen();
+
+        btnLlamarContacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(DetalleContactoActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                    LlamarContacto();
+            }else {
+                    SolicitarPermisoLlamar.launch(Manifest.permission.CALL_PHONE);
+                }
+            }
+        });
+
+        btnMensajeContacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(DetalleContactoActivity.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
+                    EnviarMensajeContacto();
+                }else {
+                    SolicitarPermisoMensaje.launch(Manifest.permission.SEND_SMS);
+                }
+            }
+        });
 
         btnBack = findViewById(R.id.btnBack);
 
@@ -89,4 +119,44 @@ public class DetalleContactoActivity extends AppCompatActivity {
             Toasty.info(this, "Esperando imagen", Toasty.LENGTH_SHORT).show();
         }
     }
+
+    private void LlamarContacto(){
+        String Telefono = txtTelefonoContactoDetalle.getText().toString();
+        if (!Telefono.equals("")){
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:"+Telefono));
+            startActivity(intent);
+        }else {
+            Toasty.error(this, "No hay numero de telefono", Toasty.LENGTH_SHORT).show();
+        }
+    }
+
+    private void EnviarMensajeContacto(){
+        String Telefono = txtTelefonoContactoDetalle.getText().toString();
+        if (!Telefono.equals("")){
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("smsto:"+Telefono));
+            intent.putExtra("sms_body", "");
+            startActivity(intent);
+        }else {
+            Toasty.error(this, "No hay numero de telefono", Toasty.LENGTH_SHORT).show();
+        }
+    }
+
+    private final ActivityResultLauncher<String> SolicitarPermisoLlamar = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+        if (isGranted){
+            LlamarContacto();
+        }else {
+            Toasty.error(this, "Permiso denegado", Toasty.LENGTH_SHORT).show();
+        }
+    });
+
+    private final ActivityResultLauncher<String> SolicitarPermisoMensaje = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+        if (isGranted){
+            EnviarMensajeContacto();
+        }else {
+            Toasty.error(this, "Permiso denegado", Toasty.LENGTH_SHORT).show();
+        }
+    });
+
 }
