@@ -215,7 +215,7 @@ public class MisContactosActivity extends AppCompatActivity {
                                 dialog.dismiss();
                             }
                         });
-
+                        dialog.show();
                     }
 });
 
