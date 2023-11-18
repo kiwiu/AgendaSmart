@@ -219,7 +219,29 @@ public class ActualizarTareaActivity extends AppCompatActivity implements Adapte
 
         //Consulta
         Query query = databaseReference.child(user.getUid()).child("Tareas_publicadas").orderByChild("id_tarea").equalTo(id_tarea_R);/*--------------*/
+        Query query1 = databaseReference.child(user.getUid()).child("Mis tareas importantes").orderByChild("id_tarea").equalTo(id_tarea_R);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    ds.getRef().child("titulo").setValue(tituloActualizar);
+                    ds.getRef().child("descripcion").setValue(descripcionActualizar);
+                    ds.getRef().child("fecha_nota").setValue(fechaActualizar);
+                    ds.getRef().child("estado").setValue(estadoActualizar);
+                }
+
+                Toasty.info(ActualizarTareaActivity.this, "Tarea actualizada con éxito", Toasty.LENGTH_SHORT).show();
+                onBackPressed();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        query1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()){

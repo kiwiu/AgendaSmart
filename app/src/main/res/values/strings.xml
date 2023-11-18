@@ -131,16 +131,16 @@
     <string name="estadoNuevo">Estado:</string>
 
     <string-array name="Estados_tarea">
-        <item>"No Finalizada"</item>
+        <item>"No finalizada"</item>
         <item>"Finalizada"</item>
     </string-array>
 
-    <!--Eliminar nota importante-->
+    <!--Eliminar tarea importante-->
     <string name="EliminarTareaImportanteTXT">¿Desea eliminar ésta nota importante de la lista?</string>
     <string name="EliminarTarea">Eliminar</string>
     <string name="EliminarTareaCancelar">Cancelar</string>
 
-    <!--Eliminar nota importante-->
+    <!--Eliminar tarea importante-->
     <string name="FiltroTXT">Tareas</string>
     <string name="Todas_Tareas">Todas las tareas</string>
     <string name="Tareas_Finalizadas">Tareas finalizadas</string>
@@ -172,4 +172,16 @@
     <string name="actualizarContacto">Actualizar contacto</string>
 
     <string name="Advertencia">Por favor complete al menos el campo Nombre del contacto</string>
+
+    <!--ACTUALIZAR CONTACTOS-->
+    <string name="Id_C_A"> -- </string>
+    <string name="uid_C_A"> -- </string>
+    <string name="Nombres_C_A"> -- </string>
+    <string name="Apellido_C_A"> -- </string>
+    <string name="Correo_C_A"> -- </string>
+    <string name="Telefono_C_A"> -- </string>
+    <string name="Edad_C_A"> -- </string>
+    <string name="Direccion_C_A"> -- </string>
+    <string name="Btn_Actualizar_C_A"> Actualizar contacto</string>
+
 </resources>

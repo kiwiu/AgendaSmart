@@ -56,15 +56,15 @@ public class DetalleTareaActivity extends AppCompatActivity {
         InicializarVistas();
         RecuperarDatos();
         SetearDatosRecuperados();
-        VerificarNotaImportante();
+        VerificarTareaImportante();
 
         Boton_Importante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (ComprobarNotaImportante){
-                    Eliminar_Nota_Importante();
+                    Eliminar_Tarea_Importante();
                 }else {
-                    Agregar_Notas_Importantes();
+                    Agregar_Tareas_Importantes();
                 }
             }
         });
@@ -118,11 +118,11 @@ public class DetalleTareaActivity extends AppCompatActivity {
         Estado_Detalle.setText(estado_R);
     }
 
-   private void Agregar_Notas_Importantes(){
+   private void Agregar_Tareas_Importantes(){
         if (user == null){
             Toasty.error(DetalleTareaActivity.this, "Error", Toasty.LENGTH_SHORT).show();
         }else {
-            /*obtener datos de la nota de la actividad anterior*/
+            /*obtener datos de la tarea de la actividad anterior*/
             Bundle intent = getIntent().getExtras();
 
             id_tarea_R = intent.getString("id_tarea");
@@ -134,13 +134,11 @@ public class DetalleTareaActivity extends AppCompatActivity {
             fecha_R = intent.getString("fecha_nota");
             estado_R = intent.getString("estado");
 
-
-
             HashMap<String , String> Nota_Importante = new HashMap<>();
             Nota_Importante.put("id_tarea", id_tarea_R);
             Nota_Importante.put("uid_usuario", uid_usuario_R);
             Nota_Importante.put("correo_usuario", correo_usuario_R);
-            Nota_Importante.put("fecha_hora_actual", fecha_registro_R);
+            Nota_Importante.put("fecha_registro", fecha_registro_R);
             Nota_Importante.put("titulo", titulo_R);
             Nota_Importante.put("descripcion", descripcion_R);
             Nota_Importante.put("fecha_nota", fecha_R);
@@ -164,7 +162,7 @@ public class DetalleTareaActivity extends AppCompatActivity {
         }
     }
 
-    private void Eliminar_Nota_Importante(){
+    private void Eliminar_Tarea_Importante(){
         if (user == null){
             Toasty.error(DetalleTareaActivity.this, "Ha ocurrido un error", Toasty.LENGTH_SHORT).show();
         }else {
@@ -188,7 +186,7 @@ public class DetalleTareaActivity extends AppCompatActivity {
         }
     }
 
-    private void VerificarNotaImportante(){
+    private void VerificarTareaImportante(){
         if (user == null){
             Toasty.error(DetalleTareaActivity.this, "Error", Toasty.LENGTH_SHORT).show();
         }else {

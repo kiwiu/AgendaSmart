@@ -148,7 +148,7 @@ public class MisTareasActivity extends AppCompatActivity {
                 viewHolder_tarea.setOnclickListener(new ViewHolder_Tarea.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        //Obtener los datos de la nota seleccionada
+                        //Obtener los datos de la tarea seleccionada
                         String id_tarea = getItem(position).getId_tarea();
                         String uid_usuario = getItem(position).getUid_usuario();
                         String correo_usuario = getItem(position).getCorreo_usuario();

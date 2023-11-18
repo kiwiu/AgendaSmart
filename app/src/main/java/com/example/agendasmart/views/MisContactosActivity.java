@@ -27,6 +27,7 @@ import com.example.agendasmart.R;
 import com.example.agendasmart.ViewHolder.ViewHolderContacto;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.StartupTime;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -190,7 +191,17 @@ public class MisContactosActivity extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(View view, int position) {
+
                         String id_c = getItem(position).getId_contacto();
+                        String uid_contacto = getItem(position).getUid_contacto();
+                        String nombres = getItem(position).getNombres();
+                        String apellidos = getItem(position).getApellidos();
+                        String correo = getItem(position).getCorreo();
+                        String telefono = getItem(position).getTelefono();
+                        String edad = getItem(position).getEdad();
+                        String direccion = getItem(position).getDireccion();
+                        String foto = getItem(position).getFoto();
+
 
                         //Toasty.info(getApplicationContext(), "Opciones de contacto", Toasty.LENGTH_SHORT).show();
                         Button EliminarC, ActualizarC;
@@ -211,7 +222,18 @@ public class MisContactosActivity extends AppCompatActivity {
                         ActualizarC.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toasty.warning(getApplicationContext(), "Actualizar contacto", Toasty.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MisContactosActivity.this, ActualizarContactoActivity.class);
+                                intent.putExtra("id_contacto", id_c);
+                                intent.putExtra("uid_contacto", uid_contacto);
+                                intent.putExtra("nombres", nombres);
+                                intent.putExtra("apellidos", apellidos);
+                                intent.putExtra("correo", correo);
+                                intent.putExtra("telefono", telefono);
+                                intent.putExtra("edad", edad);
+                                intent.putExtra("direccion", direccion);
+                                intent.putExtra("foto", foto);
+                                startActivity(intent);
+                                //Toasty.warning(getApplicationContext(), "Actualizar contacto", Toasty.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }
                         });
