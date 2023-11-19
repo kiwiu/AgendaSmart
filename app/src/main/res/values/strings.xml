@@ -135,13 +135,15 @@
         <item>"Finalizada"</item>
     </string-array>
 
+    <string name="actualizarTarea">Actualizar tarea</string>
+
     <!--Eliminar tarea importante-->
     <string name="EliminarTareaImportanteTXT">¿Desea eliminar ésta nota importante de la lista?</string>
     <string name="EliminarTarea">Eliminar</string>
     <string name="EliminarTareaCancelar">Cancelar</string>
 
     <!--Eliminar tarea importante-->
-    <string name="FiltroTXT">Tareas</string>
+    <string name="FiltroTXT">Filtrar por</string>
     <string name="Todas_Tareas">Todas las tareas</string>
     <string name="Tareas_Finalizadas">Tareas finalizadas</string>
     <string name="Tareas_No_Finalizadas">No finalizadas</string>

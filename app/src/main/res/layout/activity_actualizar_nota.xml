@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/museomoderno_semibold"
-                        android:text="@string/nuevatarea"
+                        android:text="@string/actualizarTarea"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -79,7 +79,7 @@
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:contentDescription="@string/Title"
                         android:scaleType="centerInside"
-                        android:src="@drawable/guardar" />
+                        android:src="@drawable/actualizar_tarea" />
 
                 </LinearLayout>
 
@@ -109,7 +109,7 @@
                 android:layout_width="80dp"
                 android:contentDescription="@string/fecha"
                 android:layout_height="80dp"
-                android:src="@drawable/reloj"/>
+                android:src="@drawable/actualizar"/>
 
             <TextView
                 android:id="@+id/uid_usuario_A"
@@ -172,7 +172,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:visibility="gone"
-                    android:background="#16A085"/>
+                    android:src="@drawable/finalizada"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/Tarea_No_Finalizada"
@@ -180,10 +180,11 @@
                     android:layout_height="30dp"
                     android:visibility="gone"
                     android:layout_marginStart="5dp"
-                    android:background="#E74C3C"/>
+                    android:src="@drawable/no_finalizada"/>
 
 
                 <TextView
+                    android:layout_marginStart="10dp"
                     android:id="@+id/estado_A"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -274,16 +275,17 @@
             android:gravity="center"
             android:layout_marginTop="10dp">
 
-            <TextView
-                android:id="@+id/Estado_nuevo"
-                android:text="@string/estadoNuevo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
             <Spinner
                 android:id="@+id/Spinner_estado"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:id="@+id/Estado_nuevo"
+                android:text="@string/estadoNuevo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/museomoderno"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/museomoderno_semibold"
         android:gravity="center"
-        android:layout_gravity="center_vertical"></TextView>
+        android:layout_gravity="center_vertical"/>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -27,17 +28,23 @@
         <Button
             android:id="@+id/EliminarTarea"
             android:text="@string/EliminarTarea"
-            android:layout_width="wrap_content"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_option_2"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/museomoderno"
 
            />
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/EliminarTareaCancelar"
             android:text="@string/EliminarTareaCancelar"
-            android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_inicio"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"

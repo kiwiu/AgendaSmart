@@ -78,8 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/Descripcioniten"
+                android:maxLines="1"
                 android:fontFamily="@font/museomoderno_semibold"
-                android:textSize="16sp"/>
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/fecha_hora_registro_item_I"
@@ -96,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/formatoiten"
                 android:fontFamily="@font/museomoderno_semibold"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -106,20 +107,20 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/Tarea_Finalizada_Item_I"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:visibility="gone"
-                    android:background="#16A085"/>
+                    android:src="@drawable/finalizada"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/Tarea_No_Finalizada_Item_I"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:visibility="gone"
                     android:layout_marginStart="5dp"
-                    android:background="#E74C3C"/>
+                    android:src="@drawable/no_finalizada"/>
 
                 <TextView
                     android:id="@+id/estado_item_I"

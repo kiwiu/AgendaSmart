@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -51,6 +52,8 @@ public class ActualizarImagenPerfilActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
+    ImageButton btnBack;
+
     Dialog dialog_elejir_imagen;
 
     Uri imagen_uri = null;
@@ -66,6 +69,7 @@ public class ActualizarImagenPerfilActivity extends AppCompatActivity {
         imagenPerfilActual = findViewById(R.id.imagenPerfilActual);
         btnElegirImagen = findViewById(R.id.btnElegirImagen);
         btnActualizarImagen = findViewById(R.id.btnActualizarImagen);
+        btnBack = (ImageButton)findViewById(R.id.btnBack);
 
         // Inicializamos Firebase
         firebaseAuth = FirebaseAuth.getInstance();
@@ -79,6 +83,13 @@ public class ActualizarImagenPerfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toasty.info(ActualizarImagenPerfilActivity.this,"Elegir imagen",Toasty.LENGTH_SHORT).show();
                 ElegirImagenDe();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActualizarImagenPerfilActivity.super.onBackPressed();
             }
         });
 

@@ -3,31 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:layout_height="wrap_content"
+    android:layout_height="400dp"
     android:padding="10dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:fontFamily="@font/museomoderno"
-        android:textStyle="bold"
+        android:fontFamily="@font/museomoderno_semibold"
         android:layout_gravity="center"
         android:text="@string/FiltroTXT"
+        android:textColor="@color/black"
         android:layout_marginTop="10dp"/>
 
-    <Button
-        android:id="@+id/Todas_Tareas"
-        android:text="@string/Todas_Tareas"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/museomoderno"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        />
+        android:contentDescription="@string/Title"
+        android:src="@drawable/filtrado_por"/>
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/Tareas_Finalizadas"
         android:text="@string/Tareas_Finalizadas"
         android:layout_width="180dp"
@@ -35,12 +34,27 @@
         android:fontFamily="@font/museomoderno"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:background="@drawable/btn_inicio"
         />
 
     <Button
+        android:background="@drawable/btn_option_2"
+        android:textAllCaps="false"
         android:id="@+id/Tareas_No_Finalizadas"
         android:text="@string/Tareas_No_Finalizadas"
         android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/museomoderno"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:background="@drawable/stroke_btm"
+        android:id="@+id/Todas_Tareas"
+        android:text="@string/Todas_Tareas"
+        android:layout_width="180dp"
+        android:textAllCaps="false"
         android:layout_height="wrap_content"
         android:fontFamily="@font/museomoderno"
         android:layout_marginTop="10dp"
