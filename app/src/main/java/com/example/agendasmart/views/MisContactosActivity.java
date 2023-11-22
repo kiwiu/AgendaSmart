@@ -27,6 +27,7 @@ import com.example.agendasmart.R;
 import com.example.agendasmart.ViewHolder.ViewHolderContacto;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.StartupTime;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,6 +47,8 @@ public class MisContactosActivity extends AppCompatActivity {
     DatabaseReference BD_Usuarios;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
+    FloatingActionButton btn_info_contacto;
+    Dialog info_contacto;
 
     FirebaseRecyclerAdapter<Contacto,ViewHolderContacto> firebaseRecyclerAdapter;
     FirebaseRecyclerOptions<Contacto> firebaseRecyclerOptions;
@@ -66,6 +69,8 @@ public class MisContactosActivity extends AppCompatActivity {
         btnAgregarContacto = findViewById(R.id.btn_agregar_contacto);
         VaciarContactos = findViewById(R.id.btn_eliminar_contactos);
         btnBack = findViewById(R.id.btnBack);
+        btn_info_contacto = findViewById(R.id.info_btn);
+        info_contacto = new Dialog(this);
 
         recyclerViewContactos = findViewById(R.id.recyclerViewContactos);
         recyclerViewContactos.setHasFixedSize(true);
@@ -122,6 +127,13 @@ public class MisContactosActivity extends AppCompatActivity {
             }
         });
 
+        btn_info_contacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                infoContacto();
+            }
+        });
+
         btnAgregarContacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,6 +154,23 @@ public class MisContactosActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void infoContacto() {
+        Button entendido;
+
+        info_contacto.setContentView(R.layout.info_funciones_contactos);
+        entendido = (Button) info_contacto.findViewById(R.id.btn_entendido);
+
+        entendido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                info_contacto.dismiss();
+            }
+        });
+
+        info_contacto.show();
+        info_contacto.setCanceledOnTouchOutside(false);
     }
 
     private void ListarContacto(){

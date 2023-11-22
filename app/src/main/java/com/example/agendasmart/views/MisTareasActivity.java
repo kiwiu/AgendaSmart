@@ -25,6 +25,7 @@ import com.example.agendasmart.ViewHolder.ViewHolder_Tarea;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +45,8 @@ public class MisTareasActivity extends AppCompatActivity {
     RecyclerView recyclerViewTareas;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference BD_Usuarios;
+    FloatingActionButton info_btn;
+    Dialog infoVista;
 
     LinearLayoutManager linearLayoutManager;
 
@@ -67,6 +70,8 @@ public class MisTareasActivity extends AppCompatActivity {
 
         recyclerViewTareas = findViewById(R.id.recyclerViewTareas);
         recyclerViewTareas.setHasFixedSize(true);/*Adaptarse a nuevos elementos, osea se apadta*/
+        info_btn = findViewById(R.id.info_btn);
+        infoVista= new Dialog(this);
 
         auth  = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -93,6 +98,13 @@ public class MisTareasActivity extends AppCompatActivity {
 
         btnBack = (ImageButton) findViewById(R.id.btnBack);
 
+        info_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                info();
+            }
+        });
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +130,23 @@ public class MisTareasActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void info() {
+        Button entendido;
+
+        infoVista.setContentView(R.layout.info_funciones);
+        entendido = (Button) infoVista.findViewById(R.id.btn_entendido);
+
+        entendido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                infoVista.dismiss();
+            }
+        });
+
+        infoVista.show();
+        infoVista.setCanceledOnTouchOutside(false);
     }
 
     private void ListarTodasTareas(){

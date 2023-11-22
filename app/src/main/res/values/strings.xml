@@ -186,4 +186,9 @@
     <string name="Direccion_C_A"> -- </string>
     <string name="Btn_Actualizar_C_A"> Actualizar contacto</string>
 
+    <string name="info">Tocar para ver detalles de la tarea</string>
+    <string name="infoContacto">Tocar para ver detalles del contacto</string>
+    <string name="infoPresionadoTarea">Mantener presionado para actualizar o eliminar tarea</string>
+    <string name="infoPresionadoContacto">Mantener presionado para actualizar o eliminar contacto</string>
+
 </resources>
