@@ -82,6 +82,7 @@
                 android:textColor="@color/Textcolor"
                 android:textSize="40sp" />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/Gmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,6 +92,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/uid_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

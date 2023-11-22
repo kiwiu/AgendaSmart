@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +21,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.agendasmart.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +39,8 @@ public class LobbyActivity extends AppCompatActivity {
     ImageView iv_foto_perfil;
 
     TextView tv_nombre_usuario,tv_correo_usuario, tv_ui;
-
+    Button btn_Estado;
+    ProgressDialog progressDialog;
     DatabaseReference Usuarios;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
@@ -51,10 +58,28 @@ public class LobbyActivity extends AppCompatActivity {
         tv_correo_usuario = findViewById(R.id.tv_correo_usuario);
         iv_foto_perfil = findViewById(R.id.iv_foto_perfil);
         tv_ui =  findViewById(R.id.tv_uid);
+        btn_Estado = findViewById(R.id.btn_Estado);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Por favor espere");
+        progressDialog.setCanceledOnTouchOutside(false);
 
         Usuarios = FirebaseDatabase.getInstance().getReference("Usuarios");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+
+        btn_Estado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (user.isEmailVerified()) {
+                    //si la cuenta esta verificada
+                    Toasty.success(LobbyActivity.this, "Tu cuenta ya esta verificada", Toasty.LENGTH_SHORT).show();
+                } else {
+                    //si la cuenta no esta verificada
+                    VerificarCuenta();
+                }
+            }
+        });
 
         acercade = (ImageButton) findViewById(R.id.btn_acerca_de);
         perfil = (ImageButton) findViewById(R.id.btn_perfil);
@@ -128,6 +153,56 @@ public class LobbyActivity extends AppCompatActivity {
         });
     }
 
+    private void VerificarCuenta() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LobbyActivity.this);
+        builder.setTitle("Verificar cuenta").setMessage("Estas seguro(a) de verificar tu cuenta? " + user.getEmail())
+                .setPositiveButton("Enviar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EnviarEmailVerificacion();
+                    }
+                }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toasty.info(LobbyActivity.this, "Operación cancelada", Toasty.LENGTH_SHORT).show();
+                    }
+                }).show();
+    }
+
+    private void EnviarEmailVerificacion() {
+        progressDialog.setMessage("Enviando correo de verificación " + user.getEmail());
+        progressDialog.show();
+
+        user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //correo enviado
+                progressDialog.dismiss();
+                Toasty.success(LobbyActivity.this, "Correo de verificación enviado a " + user.getEmail(), Toasty.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                    //error al enviar el correo
+                progressDialog.dismiss();
+                 Toasty.error(LobbyActivity.this, "Error al enviar el correo de verificación", Toasty.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void VerificarEstado() {
+        String verificado = "Verificado";
+        String No_verificado = "No verificado";
+
+        if (user.isEmailVerified()){
+            btn_Estado.setText(verificado);
+            btn_Estado.setBackgroundColor(Color.rgb(183, 215, 201 ));
+        }else{
+            btn_Estado.setText(No_verificado);
+            btn_Estado.setBackgroundColor(Color.rgb(247, 207, 207));
+            ;}
+    }
+
     private void SalirApp() {
         firebaseAuth.signOut();
         Toasty.success(LobbyActivity.this, "Sesión cerrada correctamente", Toasty.LENGTH_SHORT).show();
@@ -151,6 +226,8 @@ public class LobbyActivity extends AppCompatActivity {
     }
 
     private void CargaDeDatos() {
+        //obtenemos el estado de VERIFICACION de la cuenta
+        VerificarEstado();
         Usuarios.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

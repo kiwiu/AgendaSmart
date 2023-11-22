@@ -156,6 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/Id_C_A"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:fontFamily="@font/museomoderno"/>
 
@@ -164,6 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/uid_C_A"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:fontFamily="@font/museomoderno"/>
 
