@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -58,10 +59,14 @@ public class MisContactosActivity extends AppCompatActivity {
     ImageButton btnAgregarContacto, btnBack, VaciarContactos;
 
     Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_contactos);
+
+        RadioButton radioNombres = findViewById(R.id.radioNombres);
+        RadioButton radioCorreo = findViewById(R.id.radioCorreo);
 
         linearLayoutBotones = findViewById(R.id.linearLayoutBotones);
         linearLayoutBuscar = findViewById(R.id.linearLayoutSearch);
@@ -102,15 +107,27 @@ public class MisContactosActivity extends AppCompatActivity {
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextSubmit(String query) {
-                        BuscarContacto(query);
+
+                        boolean busquedaPorNombres = radioNombres.isChecked();
+
+                        if (busquedaPorNombres) {
+                            buscarContactoNombres(query);
+                        } else {
+                            buscarContactoCorreos(query);
+                        }
 
                         return false;
                     }
 
                     @Override
                     public boolean onQueryTextChange(String newText) {
-                        BuscarContacto(newText);
+                        boolean busquedaPorNombres = radioNombres.isChecked();
 
+                        if (busquedaPorNombres) {
+                            buscarContactoNombres(newText);
+                        } else {
+                            buscarContactoCorreos(newText);
+                        }
                         return true;
                     }
                 });
@@ -268,7 +285,7 @@ public class MisContactosActivity extends AppCompatActivity {
                         });
                         dialog.show();
                     }
-});
+                });
 
                 return viewHolderContacto;
             }
@@ -279,9 +296,15 @@ public class MisContactosActivity extends AppCompatActivity {
         recyclerViewContactos.setAdapter(firebaseRecyclerAdapter);
     }
 
-    private void BuscarContacto(String Nombre_Contacto){
-        Query query = BD_Usuarios.child(user.getUid()).child("Contactos").orderByChild("nombres").startAt(Nombre_Contacto).endAt(Nombre_Contacto + "\uf8ff");
-        firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Contacto>().setQuery(query, Contacto.class).build();
+    private void buscarContactoNombres(String query) {
+
+        Query queryNombres = BD_Usuarios.child(user.getUid()).child("Contactos")
+                .orderByChild("nombres")
+                .startAt(query)
+                .endAt(query + "\uf8ff");
+
+        FirebaseRecyclerOptions<Contacto> firebaseRecyclerOptions =
+                new FirebaseRecyclerOptions.Builder<Contacto>().setQuery(queryNombres, Contacto.class).build();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Contacto, ViewHolderContacto>(firebaseRecyclerOptions) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolderContacto viewHolderContacto, int position, @NonNull Contacto contacto) {
@@ -323,7 +346,71 @@ public class MisContactosActivity extends AppCompatActivity {
 
                         startActivity(intent);
                     }
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+                        Toasty.info(getApplicationContext(), "Click largo en el item", Toasty.LENGTH_SHORT).show();
+                    }
+                });
 
+                return viewHolderContacto;
+            }
+        };
+
+        recyclerViewContactos.setLayoutManager(new GridLayoutManager(MisContactosActivity.this, 2));
+        firebaseRecyclerAdapter.startListening();
+        recyclerViewContactos.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    private void buscarContactoCorreos(String query) {
+
+        Query queryCorreos = BD_Usuarios.child(user.getUid()).child("Contactos")
+                .orderByChild("correo")
+                .startAt(query)
+                .endAt(query + "\uf8ff");
+
+        FirebaseRecyclerOptions<Contacto> firebaseRecyclerOptions =
+                new FirebaseRecyclerOptions.Builder<Contacto>().setQuery(queryCorreos, Contacto.class).build();
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Contacto, ViewHolderContacto>(firebaseRecyclerOptions) {
+            @Override
+            protected void onBindViewHolder(@NonNull ViewHolderContacto viewHolderContacto, int position, @NonNull Contacto contacto) {
+                viewHolderContacto.SetearDatosContacto(getApplicationContext(), contacto.getId_contacto(), contacto.getUid_contacto(),
+                        contacto.getNombres(), contacto.getApellidos(), contacto.getCorreo(), contacto.getTelefono(),
+                        contacto.getEdad(), contacto.getDireccion(), contacto.getFoto());
+            }
+
+            @NonNull
+            @Override
+            public ViewHolderContacto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contacto, parent, false);
+                ViewHolderContacto viewHolderContacto = new ViewHolderContacto(view);
+                viewHolderContacto.setOnclickListener(new ViewHolderContacto.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //Obtener datos del contacto seleccionado
+                        String id_contacto = getItem(position).getId_contacto();
+                        String uid_contacto = getItem(position).getUid_contacto();
+                        String nombres = getItem(position).getNombres();
+                        String apellidos = getItem(position).getApellidos();
+                        String correo = getItem(position).getCorreo();
+                        String telefono = getItem(position).getTelefono();
+                        String edad = getItem(position).getEdad();
+                        String direccion = getItem(position).getDireccion();
+                        String foto = getItem(position).getFoto();
+
+                        //enviar datos a la actividad DetalleContactoActivity
+                        Intent intent = new Intent(MisContactosActivity.this, DetalleContactoActivity.class);
+                        intent.putExtra("id_contacto", id_contacto);
+                        intent.putExtra("uid_contacto", uid_contacto);
+                        intent.putExtra("nombres", nombres);
+                        intent.putExtra("apellidos", apellidos);
+                        intent.putExtra("correo", correo);
+                        intent.putExtra("telefono", telefono);
+                        intent.putExtra("edad", edad);
+                        intent.putExtra("direccion", direccion);
+                        intent.putExtra("foto", foto);
+
+                        startActivity(intent);
+                    }
                     @Override
                     public void onItemLongClick(View view, int position) {
                         Toasty.info(getApplicationContext(), "Click largo en el item", Toasty.LENGTH_SHORT).show();
