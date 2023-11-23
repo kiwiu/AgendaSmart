@@ -163,8 +163,8 @@ public class AgregarTareaActivity extends AppCompatActivity {
         String Estado = estado.getText().toString();
         String id_nota = BD_Firebase.push().getKey();
 
-        // Agregar notificación con repetición cada 1 minuto antes de la fecha de finalización
-        long repeatIntervalMillis = 60 * 1000; // 1 minuto en milisegundos
+        // Agregar notificación con repetición cada 1 hora antes de la fecha de finalización
+        long repeatIntervalMillis = 5 * 60 * 1000; // 1 hora en milisegundos
         TaskReminder.scheduleNotification(this, Titulo, "¡La tarea está a punto de terminar!", Fecha, repeatIntervalMillis);
 
         /*validar datos*/

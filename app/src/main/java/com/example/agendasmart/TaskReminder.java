@@ -18,8 +18,8 @@ public class TaskReminder {
             Log.d("TaskReminder", "Tiempo restante hasta la tarea: " + timeDiffMillis);
 
             if (timeDiffMillis > 0) {
-                // Ajusta el tiempo restante para notificar 30 minutos antes
-                long notificationTimeMillis = timeDiffMillis - (49 * 60 * 1000); // Resta 30 minutos
+                // Ajusta el tiempo restante para notificar 15 horas antes
+                long notificationTimeMillis = timeDiffMillis - (14 * 60 * 60 * 1000); // Resta 15 horas
 
                 Intent notificationIntent = new Intent(context, NotificationReceiver.class);
                 notificationIntent.putExtra("title", title);
@@ -34,7 +34,7 @@ public class TaskReminder {
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
                 // Configura la repetición con un intervalo específico
-                alarmManager.set(AlarmManager.RTC_WAKEUP, futureMillis, pendingIntent);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, futureMillis, repeatIntervalMillis, pendingIntent);
             } else {
                 // La fecha de la tarea está en el pasado, maneja este caso si es necesario
                 Log.d("TaskReminder", "La fecha de la tarea está en el pasado");

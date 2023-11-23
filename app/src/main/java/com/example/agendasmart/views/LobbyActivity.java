@@ -47,6 +47,8 @@ public class LobbyActivity extends AppCompatActivity {
     FirebaseUser user;
     Dialog acercadeVista;
 
+    Dialog cuenta_verificada;
+
     LinearLayout btn_agregar_tarea, btn_mis_tareas, btn_tareas_importantes, btn_contactos;
 
     @Override
@@ -65,16 +67,19 @@ public class LobbyActivity extends AppCompatActivity {
         progressDialog.setTitle("Por favor espere");
         progressDialog.setCanceledOnTouchOutside(false);
 
+        cuenta_verificada = new Dialog(this);
+
         Usuarios = FirebaseDatabase.getInstance().getReference("Usuarios");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+
 
         btn_Estado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (user.isEmailVerified()) {
                     //si la cuenta esta verificada
-                    Toasty.success(LobbyActivity.this, "Tu cuenta ya esta verificada", Toasty.LENGTH_SHORT).show();
+                    animacioncuetaverificada();
                 } else {
                     //si la cuenta no esta verificada
                     VerificarCuenta();
@@ -208,6 +213,22 @@ public class LobbyActivity extends AppCompatActivity {
             btn_Estado.setBackgroundResource(R.drawable.btn_option_2);
             btn_Estado.setCompoundDrawablesWithIntrinsicBounds(icono2, null, null, null);
             ;}
+    }
+
+    private void animacioncuetaverificada(){
+        Button EntendidoVerificado;
+
+        cuenta_verificada.setContentView(R.layout.dialogo_cuenta_verificada);
+        EntendidoVerificado = cuenta_verificada.findViewById(R.id.EntendidoVerificado);
+
+        EntendidoVerificado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cuenta_verificada.dismiss();
+            }
+        });
+        cuenta_verificada.show();
+        cuenta_verificada.setCanceledOnTouchOutside(false);
     }
 
     private void SalirApp() {
