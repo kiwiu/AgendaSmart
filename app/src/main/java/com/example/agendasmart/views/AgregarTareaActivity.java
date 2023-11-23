@@ -14,8 +14,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
 import com.example.agendasmart.Objetos.Tarea;
 import com.example.agendasmart.R;
+import com.example.agendasmart.TaskReminder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -156,6 +162,10 @@ public class AgregarTareaActivity extends AppCompatActivity {
         String Fecha = fecha.getText().toString();
         String Estado = estado.getText().toString();
         String id_nota = BD_Firebase.push().getKey();
+
+        // Agregar notificación con repetición cada 1 minuto antes de la fecha de finalización
+        long repeatIntervalMillis = 60 * 1000; // 1 minuto en milisegundos
+        TaskReminder.scheduleNotification(this, Titulo, "¡La tarea está a punto de terminar!", Fecha, repeatIntervalMillis);
 
         /*validar datos*/
         if (!Uid_usuario.equals("") && !Correo_usuario.equals("") && !FechaHoraActual.equals("") &&
