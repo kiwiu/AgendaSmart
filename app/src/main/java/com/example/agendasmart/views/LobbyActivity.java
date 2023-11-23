@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -194,12 +195,18 @@ public class LobbyActivity extends AppCompatActivity {
         String verificado = "Verificado";
         String No_verificado = "No verificado";
 
+        Drawable icono = getResources().getDrawable(R.drawable.email_verificado);
+        Drawable icono2 = getResources().getDrawable(R.drawable.mail_error);
+
+
         if (user.isEmailVerified()){
             btn_Estado.setText(verificado);
-            btn_Estado.setBackgroundColor(Color.rgb(183, 215, 201 ));
+            btn_Estado.setBackgroundResource(R.drawable.btn_inicio);
+            btn_Estado.setCompoundDrawablesWithIntrinsicBounds(icono, null, null, null);
         }else{
             btn_Estado.setText(No_verificado);
-            btn_Estado.setBackgroundColor(Color.rgb(247, 207, 207));
+            btn_Estado.setBackgroundResource(R.drawable.btn_option_2);
+            btn_Estado.setCompoundDrawablesWithIntrinsicBounds(icono2, null, null, null);
             ;}
     }
 
