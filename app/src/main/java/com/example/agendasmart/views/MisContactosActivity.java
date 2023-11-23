@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -55,6 +56,8 @@ public class MisContactosActivity extends AppCompatActivity {
     FirebaseRecyclerOptions<Contacto> firebaseRecyclerOptions;
 
     LinearLayout linearLayoutBotones, linearLayoutBuscar;
+
+    RadioGroup radioGroup;
     SearchView searchView;
     ImageButton btnAgregarContacto, btnBack, VaciarContactos;
 
@@ -76,6 +79,7 @@ public class MisContactosActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btn_info_contacto = findViewById(R.id.info_btn);
         info_contacto = new Dialog(this);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
 
         recyclerViewContactos = findViewById(R.id.recyclerViewContactos);
         recyclerViewContactos.setHasFixedSize(true);
@@ -99,6 +103,7 @@ public class MisContactosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 linearLayoutBotones.setVisibility(View.GONE);
                 linearLayoutBuscar.setVisibility(View.VISIBLE);
+                radioGroup.setVisibility(View.VISIBLE);
                 searchView.requestFocus();
 
                 // Listener para la búsqueda dinámica mientras se escribe en el SearchView
@@ -140,6 +145,7 @@ public class MisContactosActivity extends AppCompatActivity {
             public boolean onClose() {
                 linearLayoutBotones.setVisibility(View.VISIBLE);
                 linearLayoutBuscar.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
                 return false;
             }
         });
